@@ -1,0 +1,241 @@
+\documentclass{article}
+\usepackage{titlesec}
+
+\usepackage[citestyle=authortitle-terse,backref,backend=bibtex]{biblatex}
+\addbibresource{bibliography.bib}
+
+\makeatletter
+\renewcommand\thesection{}
+\renewcommand\thesubsection{\@arabic\c@section.\@arabic\c@subsection}
+\makeatother
+\usepackage{tocloft}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+
+\usepackage[left=4cm, right=4cm]{geometry}
+\usepackage{palatino,eulervm,dutchcal,xcolor}
+\usepackage{graphicx,subcaption,float}
+\usepackage{enumitem,parskip,multicol,array}
+\newcolumntype{L}{>{$}c<{$}}%table in mathmode
+\usepackage{amsthm,amssymb,amsmath,mathtools,thmtools,tikz,tikz-cd}
+\usetikzlibrary{%
+	matrix,%
+	calc,%
+	arrows,%
+	shapes,
+	decorations.markings,backgrounds,calc,intersections}
+\tikzcdset{scale cd/.style={every label/.append style={scale=#1},
+		cells={nodes={scale=#1}}}}
+\usepackage[bookmarks,bookmarksopen,bookmarksdepth=3]{hyperref}
+\hypersetup{%colores
+	colorlinks=true,
+	urlcolor=blue,
+	linkcolor=magenta,
+	citecolor=blue,
+	filecolor=blue,
+	urlbordercolor=white,
+	linkbordercolor=white,
+	citebordercolor=white,
+	filebordercolor=white}
+\usepackage{cleveref}
+
+\definecolor{blue-violet}{rgb}{0.54, 0.17, 0.89}
+\definecolor{azure}{rgb}{0.0, 0.5, 1.0}
+\definecolor{green(ncs)}{rgb}{0.0, 0.62, 0.42}
+\definecolor{forestgreen}{rgb}{0.13, 0.55, 0.13}
+\definecolor{limegreen}{rgb}{0.2, 0.8, 0.2}
+\definecolor{palatinateblue}{rgb}{0.15, 0.23, 0.89}
+\definecolor{trueblue}{rgb}{0.0, 0.45, 0.81}
+\definecolor{goldenyellow}{rgb}{1.0, 0.87, 0.0}
+\definecolor{fashionfuchsia}{rgb}{0.96, 0.0, 0.63}
+\definecolor{brightcerulean}{rgb}{0.11, 0.67, 0.84}
+\definecolor{jonquil}{rgb}{0.98, 0.85, 0.37}
+\definecolor{lavendermagenta}{rgb}{0.93, 0.51, 0.93}
+\definecolor{peru}{rgb}{0.8, 0.52, 0.25}
+\definecolor{persimmon}{rgb}{0.93, 0.35, 0.0}
+\definecolor{persianred}{rgb}{0.8, 0.2, 0.2}
+\definecolor{persianblue}{rgb}{0.11, 0.22, 0.73}
+\definecolor{persiangreen}{rgb}{0.0, 0.65, 0.58}
+\definecolor{persianyellow}{rgb}{0.9, 0.89, 0.0}
+
+
+
+\declaretheoremstyle[headfont=\color{trueblue}\normalfont\bfseries,]{colored1}
+\declaretheoremstyle[headfont=\color{forestgreen}\normalfont\bfseries,]{colored2}
+\declaretheoremstyle[headfont=\color{peru}\normalfont\bfseries,]{colored3}
+\declaretheoremstyle[headfont=\color{persiangreen}\normalfont\bfseries,]{colored4}
+\declaretheoremstyle[headfont=\color{brightcerulean}\normalfont\bfseries,]{colored5}
+\declaretheoremstyle[headfont=\color{lavendermagenta}\normalfont\bfseries,]{colored6}
+\declaretheoremstyle[headfont=\color{blue-violet}\normalfont\bfseries,]{colored7}
+\declaretheoremstyle[headfont=\color{green(ncs)}\normalfont\bfseries,]{colored8}
+\declaretheoremstyle[headfont=\color{peru}\normalfont\bfseries,]{colored9}
+\declaretheoremstyle[headfont=\color{persiangreen}\normalfont\bfseries,]{colored10}
+
+\declaretheorem[style=colored1,name=Theorem]{thm}
+\declaretheorem[style=colored2,numberlike=thm,name=proposition]{prop}
+\declaretheorem[style=colored3,numbered=no,name=Lemma]{lemma}
+\declaretheorem[style=colored4,numbered=no,name=Corollary]{coro}
+\declaretheorem[style=colored5,numbered=no,name=Example]{example}
+\declaretheorem[style=colored5,numbered=no,name=Examples]{exemplos}
+\declaretheorem[style=colored7,numbered=no,name=Exercise]{exercise}
+\declaretheorem[style=colored6,numbered=no,name=Remark]{remark}
+\declaretheorem[style=colored8,numbered=no,name=Claim]{claim}
+\declaretheorem[style=colored9,numbered=no,name=Definition]{defn}
+\declaretheorem[style=colored10,numbered=no,name=Question]{question}
+
+\numberwithin{equation}{section}
+
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\D}{\mathbb{D}}
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\Ac}{\mathcal{A}}
+\newcommand{\Bc}{\mathcal{B}}
+\newcommand{\Cc}{\mathcal{C}}
+\newcommand{\Dc}{\mathcal{D}}
+\newcommand{\Ec}{\mathcal{E}}
+\newcommand{\Fc}{\mathcal{F}}
+\newcommand{\Gc}{\mathcal{G}}
+\newcommand{\Hc}{\mathcal{H}}
+\newcommand{\Ic}{\mathcal{I}}
+\newcommand{\Jc}{\mathcal{J}}
+\newcommand{\Kc}{\mathcal{K}}
+\newcommand{\Lc}{\mathcal{L}}
+\newcommand{\Mc}{\mathcal{M}}
+\newcommand{\Nc}{\mathcal{N}}
+\newcommand{\Oc}{\mathcal{O}}
+\newcommand{\Pc}{\mathcal{P}}
+\newcommand{\Qc}{\mathcal{Q}}
+\newcommand{\Rc}{\mathcal{R}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\Tc}{\mathcal{T}}
+\newcommand{\Uc}{\mathcal{U}}
+\newcommand{\Vc}{\mathcal{V}}
+\newcommand{\Wc}{\mathcal{W}}
+\newcommand{\Xc}{\mathcal{X}}
+\newcommand{\Yc}{\mathcal{Y}}
+\newcommand{\Zc}{\mathcal{Z}}
+\newcommand{\Xf}{\mathfrak{X}}
+
+\DeclareMathOperator{\img}{img}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\pt}{pt}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\Def}{Def}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\hTop}{h-Top}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Top}{Top}
+\DeclareMathOperator{\Set}{Set}
+\DeclareMathOperator{\CGWH}{CGWH}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Tot}{Tot}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\hofib}{hofib}
+\DeclareMathOperator{\rel}{rel}
+\DeclareMathOperator{\Nat}{Nat}
+\DeclareMathOperator{\Arr}{Arr}
+\DeclareMathOperator{\Funct}{Funct}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\U}{U}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\PSL}{PSL}
+
+\begin{document}
+{\LARGE notes on mirror symmetry}
+%\tableofcontents
+\section{3 may (Alex)}
+Main reference for these notes is \cite{gross}, sect. 14.
+
+We wish to understand
+\begin{thm}[Bogomolov-Tian-Todorov]
+	Any Calabi-Yau manifold has unobstructed deformations.
+\end{thm}
+
+\begin{defn}
+	An \textbf{\textit{almost compelx structure}} is an endomorphism $J$…
+ \end{defn}
+ \begin{remark}
+ 	It is a fact by Borel \& Serre (1953) that the only spheres which admit an almost complex structure are $S^2$ and $S^6$.
+ \end{remark}
+\begin{example}
+	All complex manifolds are almost complex manifolds.
+\end{example}
+\begin{thm}
+	A necessary and sufficient condition for a $2u$-smooth manifold $M$ to admit an almost complex structure is that the group of tangent bundle of $M$ could be reduced to $\U(n)$.
+\end{thm}
+\begin{thm}[Newlander-Nirenberg]
+	Let $(M,J)$ be an almost complex manifold. Then, the following are equivalent:
+	\begin{enumerate}
+		\item (six conditions…)
+	\end{enumerate}
+\end{thm}
+\begin{prop}
+	An almost complex structure on a real 2-dimensional manifold is a complex structure.
+\end{prop}
+\begin{proof}
+	By the Newlander-Nirenberg theorem, given a point $p\in U\subset M$ and a vector field $\Xf{U}$, we have that $(V,JV)$ is a frame, and
+	\[N(V,JV)=[V,JV]+J[V,JV]+J[V,J^2V]-[JV,J^2V]=0\]
+\end{proof}
+\begin{defn}
+	A \textbf{\textit{deformation}} of complex analytic space $M$ over a germ $(S,s_0)$ of complex analytic space is a triple $\pi_,X,i)$ such that
+	\[\begin{tikzcd}
+		X\arrow[d,"\pi",swap]&M\arrow[l,"\text{embedding}",swap]\arrow[d]\\
+		(S,s_0)&\pt\arrow[l,"s_0"]
+	\end{tikzcd}\]
+	where $M$ is a compact manifold, $M\simeq\pi^{-1}(s_0)$ and $\pi$ is proper smooth.
+\end{defn}
+\begin{thm}[Ehresmann]
+	Let $\pi:X\to S$ be a proper family of differentiable manifold. If $S$ is conncected, then all fibres are diffeomorphic.
+\end{thm}
+\begin{thm}[Kodaira]
+	Let $X_0$ be a compact Kähler manifold. If $X\to S$ is a deformation, then any fibre $X_t$ is again Kähler.
+\end{thm}
+\begin{thm}[Kuranashi]\leavevmode
+	\begin{enumerate}
+		\item Any compact complex manifold admits a universal deformation.
+		\item If $\Gamma(X_0,T_{x_0})=0$ then it admits a universal deformation.
+	\end{enumerate}
+\end{thm}
+\begin{lemma}
+	Let $J$ be an almost complex structure sufficiently close to $J_0$ so that it is represented by a form $\lambda\in A^{0,1}T^{1,0}M$. Then $J$ is integrable if and only if 
+	\[\bar{\partial}\lambda_i+\frac{1}{2}[\lambda_j,\lambda_j]=0.\]
+\end{lemma}
+\begin{thm}[Maurier-Cartan]
+	\[\bar{\partial}\phi+[\phi,\phi]=0\]
+	where
+	\[\phi=\phi(t)=\sum_{i=1}\phi_it_i\]
+\end{thm}
+\begin{defn}\leavevmode
+	\begin{itemize}
+		\item The \textbf{\textit{Kodaira-Spencer class}} of a one-parameter deformation $J_t$ of a complex stucture $J$ is induced by a homology class $\phi_1\in H^1(X,Tx)$.
+		\item The \textbf{\textit{Kodaira-Spancer map}} is
+		\begin{align*}
+			T_sS&\to H^1(X_s,T_{X_s})=T_{[X_s]}\Def(X_{s_0})
+		\end{align*}
+	\end{itemize}
+\end{defn}
+
+\clearpage
+\addcontentsline{toc}{section}{References}
+\printbibliography
+\clearpage
+\end{document}
