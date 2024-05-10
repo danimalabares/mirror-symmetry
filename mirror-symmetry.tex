@@ -324,7 +324,7 @@ Now take $s\in T^{1,0}\otimes\Omega^{0,1}$ such that
 \[\bar\partial s+[s,s]=0\]
 and consider also its cohomology class $[s]\in H^1(T^{1,0})$. We have the \textbf{\textit{Kodaira-Spencer map}}
 \begin{align*}
-	\operatorname{KS}:T_0\Def(X)&\to H^1(T^{1,0})\\
+	\operatorname{KS}:T_{s_0}S&\to H^1(T^{1,0})\cong T_X\Def X\\
 	s&\mapsto [s]
 \end{align*}
 which is useful because de \textbf{\textit{deformation space}} of $X$ is
@@ -337,6 +337,15 @@ So suppose
 and we wish to find
 \[\bar\partial s_1=0\qquad\qquad\text{and}\qquad\qquad \bar\partial s_n=\sum_{i+j=n-1}[s_i,s_j]\]
 The right-hand-side equation says $s_n$ is $\bar\partial$-exact.
+
+Now since our objective is to understand Tian-Tudorov-Bogomolov, we are interested in what \textbf{\textit{unobsturctedness}} is. It means that
+\[\bar\partial s_1=0\qquad\qquad\text{and}\qquad\qquad\bar\partial s_2=[s_1,s_2]\]
+
+Also recall that
+\begin{defn}
+	Two manifolds $M_1,M_2\subseteq\C^n$ define the same \textbf{\textit{germ}} at $0\in\C^n$ if there is an open set $U\subseteq \C^n$ containing $0$ such that
+	\[M_1\cap U=M_\cap U.\]
+\end{defn}
 
 \subsection{Griffths transversality}
 
