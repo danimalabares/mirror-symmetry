@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{titlesec}
 
-\usepackage[citestyle=authortitle-terse,backref,backend=bibtex]{biblatex}
+\usepackage[backend=bibtex,citestyle=authortitle-terse,backref]{biblatex}
 \addbibresource{bibliography.bib}
 
 \makeatletter
@@ -156,14 +156,19 @@
 \DeclareMathOperator{\Sp}{Sp}
 \DeclareMathOperator{\M}{M}
 \DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Bl}{Bl}
 \DeclareMathOperator{\PGL}{PGL}
 \DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\Teich}{Teich}
+\DeclareMathOperator{\Diff}{Diff}
+\DeclareMathOperator{\Spec}{Spec}
+\renewcommand{\Def}{\operatorname{Def}}
 
 \begin{document}
 {\LARGE notes on mirror symmetry}
 %\tableofcontents
 \section{3 may (Alex)}
-Main reference for these notes is \cite{gross}, sect. 14.
+%Main reference for these notes is \cite{gross}, sect. 14.
 
 We wish to understand
 \begin{thm}[Bogomolov-Tian-Todorov]
@@ -234,7 +239,108 @@ We wish to understand
 	\end{itemize}
 \end{defn}
 
-\addcontentsline{toc}{section}{References}
-\printbibliography
-\clearpage
+\section{10 May}
+\subsection{Sergey: preliminaries}
+We work in the category of schemes over $\C$.
+\begin{defn}
+	A morphism $f:X\to Y$ is \textbf{\textit{projective}} if
+	\[\begin{tikzcd}[column sep=small]
+		X\arrow[rr,"f"]\arrow[dr,hook,"i",swap]&&Y\\
+		&\P^n_Y=Y\times\P^n\arrow[ur]
+	\end{tikzcd}\]
+	where $i$ is a closed embedding and in fact $Y\times\P^n=\Spec\C$.
+\end{defn}
+\begin{defn}
+	A \textbf{\textit{Hilbert function}} for a given $Z\hookrightarrow\P^N$ is
+	\[h_Z(n)=\chi(Z,\Oc_Z(n))\]
+\end{defn}
+\begin{claim}[Criterium for flatness of projective morphisms]
+	A projective morhphism is flat if and only if $h_{X_t}(n)$ is constant {\color{azure}as a function of $t$?
+		
+	$Y\to\Q[n]$}.
+\end{claim}
+\begin{example}[non-flat projective morphism (blowup), which is also a non-submersion]
+	Let's find some $f:X\to Y$ projective but not flat. Suppose $X,Y$ are smooth and connected.
+	
+	A closed embedding.
+		
+		We tried
+		\[\begin{tikzcd}[column sep=small]
+			&\C^2\times\P^1\arrow[dr]\\
+			X=\Bl_0\C\arrow[ur,hook]\arrow[rr,"\pi"]&&Y=\C^2
+		\end{tikzcd}\]
+		but {\color{azure}(I think)} its differential is not surjective due to the tangent space of the exceptional divisor.
+		
+\begin{defn}[\href{https://en.wikipedia.org/wiki/Smooth_morphism}{Wiki}]
+	In algebraic geometry, a morphism $f:X\to S$ between schemes is said to be \textbf{\textit{smooth}} if
+	\begin{enumerate}
+		\item it is locally of finite presentation.
+		\item it is flat, and
+		\item for every geometric point $\bar{s}\to S$ the fiber $X_{\bar{s}}=X\times_X\bar{s}$.
+	\end{enumerate}
+\end{defn}
+	
+	
+	
+\end{example}
+\subsection{Bruno: more on deformation}
+\begin{defn}[of smooth submersion] A map whose differential is surjective.
+\end{defn}
+\begin{defn}[\cite{gross}]
+	A \textbf{\textit{deformation}} $X$ consists of a smooth proper morphism $\Xc \to S$, where $\Xc$ and $S$ are connected complex spaces, and an isomorphism $X \cong \Xc_0$, where $0\in S$ is a distinguished point. We call $\Xc\to S$ a \textbf{\textit{family of complex manifolds}}.
+\end{defn}
+
+In order to define the deformation space $\Def(X)$ suppose $X$ is Kähler with $H^0(X,\Tc_X)=0$. Then there exists a universal deformation:
+\begin{defn}[\cite{gross}]
+	A deformation $X\to(S,0)$ of $X$ is called \textbf{\textit{universal}} if any other deformation $X' \to (S',0')$ is isomorphic to the pullback under a uniquely determined morphism $\varphi:S'\to S$ with $\varphi(0')=0$.
+	\[\begin{tikzcd}
+		\Xc_S\arrow[d,"\pi_S",swap]\arrow[r]&\Xc\arrow[d]\\
+		S\arrow[r,"\exists!",swap]&\Def_S(X)
+	\end{tikzcd}\]
+\end{defn}
+\begin{defn}
+	The \textbf{\textit{Teichmüller space}} of $X$ is
+	\[\Teich(X)=\frac{\text{complex structures on }M}{\Diff_0}\]
+	and it is such that
+	\[\Tc_X\Teich(X)=H^1(X,\Tc_IX^{1,0})\]
+\end{defn}
+\begin{remark}[The Misha Verbitsky way]
+	Let $X=(M,I)$ and $\bar\partial:C^\infty(M)\to\Omega^1(M,\C)$ and remember that
+	\begin{itemize}
+		\item $\img\bar\partial=\Omega^{0,1}_{(I)}(M)$
+		\item $\bar\partial^2=0$.
+	\end{itemize}
+	Take a solution of the Maurer-Carten equation:
+	\[\bar\partial\gamma+[\gamma,\gamma]=0\]
+	where $\gamma\in T^{1,0}\otimes\Omega^{0,1}$. Then we do
+	\begin{align*}
+		(\bar\partial+\gamma)(\bar\partial f+\gamma f)&=\bar\partial(\gamma f)+\gamma\bar\partial f+\gamma(\gamma f)\\
+		\bar\partial_{\text{new}}f&=\bar\partial f+\gamma f.\\
+		{\color{azure}…?}
+	\end{align*}
+\end{remark}
+\vspace{2em}
+Now take $s\in T^{1,0}\otimes\Omega^{0,1}$ such that
+\[\bar\partial s+[s,s]=0\]
+and consider also its cohomology class $[s]\in H^1(T^{1,0})$. We have a map
+\begin{align*}
+	\operatorname{KS}:T_0\Def(X)&\to H^1(T^{1,0})\\
+	s&\mapsto [s]
+\end{align*}
+which is useful because de \textbf{\textit{deformation space}} of $X$ is
+\[(\Def X,0)=\frac{\text{solutions to Maurer-Cartan}}{\Diff_0}\]
+
+Ok, but what is the bracket? Answer: take the usual vector field conmutator on vector fields and the wedge product on differential forms. This makes $(\Tc^{1,0}_X\otimes \Omega^{0,\bullet}_X,[,],\bar\partial)$ into a \textbf{\textit{differential graded Lie algebra (DGLA)}}.
+
+So suppose
+\[s=\sum_{n\geq1}t^ms_m\]
+and we wish to find
+\[\bar\partial s_1=0\qquad\qquad\text{and}\qquad\qquad \bar\partial s_n=\sum_{i+j=n-1}[s_i,s_j]\]
+The right-hand-side equation says $s_n$ is $\bar\partial$-exact.
+
+\subsection{Griffths transversality}
+
+%\addcontentsline{toc}{section}{References}
+%\printbibliography
+%\clearpage
 \end{document}
