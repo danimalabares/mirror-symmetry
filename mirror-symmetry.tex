@@ -71,8 +71,8 @@
 \declaretheoremstyle[headfont=\color{peru}\normalfont\bfseries,]{colored9}
 \declaretheoremstyle[headfont=\color{persiangreen}\normalfont\bfseries,]{colored10}
 
-\declaretheorem[style=colored1,name=Theorem]{thm}
-\declaretheorem[style=colored2,numberlike=thm,name=proposition]{prop}
+\declaretheorem[style=colored1,numbered=no,name=Theorem]{thm}
+\declaretheorem[style=colored2,numbered=no,name=proposition]{prop}
 \declaretheorem[style=colored3,numbered=no,name=Lemma]{lemma}
 \declaretheorem[style=colored4,numbered=no,name=Corollary]{coro}
 \declaretheorem[style=colored5,numbered=no,name=Example]{example}
@@ -254,8 +254,11 @@ We work in the category of schemes over $\C$.
 	A \textbf{\textit{Hilbert function}} for a given $Z\hookrightarrow\P^N$ is
 	\[h_Z(n)=\chi(Z,\Oc_Z(n))\]
 \end{defn}
+\begin{defn}[Found later in \cite{huybrechts}, p. 273]
+	A morphism $f:(X,\Oc_X)\to(Y,\Oc_Y)$ if \textbf{\textit{flat}} if the stalk $\Oc_{X,x}$ {\color{magenta}[…]}
+\end{defn}
 \begin{claim}[Criterium for flatness of projective morphisms]
-	A projective morhphism is flat if and only if $h_{X_t}(n)$ is constant {\color{azure}as a function of $t$?
+	A projective morhphism is flat if and only if $h_{X_t}(n)$ is constant {\color{magenta}as a function of $t$?
 		
 	$Y\to\Q[n]$}.
 \end{claim}
@@ -269,7 +272,7 @@ We work in the category of schemes over $\C$.
 			&\C^2\times\P^1\arrow[dr]\\
 			X=\Bl_0\C\arrow[ur,hook]\arrow[rr,"\pi"]&&Y=\C^2
 		\end{tikzcd}\]
-		but {\color{azure}(I think)} its differential is not surjective due to the tangent space of the exceptional divisor.
+		but {\color{magenta}(I think)} its differential is not surjective due to the tangent space of the exceptional divisor.
 		
 \begin{defn}[\href{https://en.wikipedia.org/wiki/Smooth_morphism}{Wiki}]
 	In algebraic geometry, a morphism $f:X\to S$ between schemes is said to be \textbf{\textit{smooth}} if
@@ -316,7 +319,7 @@ In order to define the deformation space $\Def(X)$ suppose $X$ is Kähler with $
 	\begin{align*}
 		(\bar\partial+\gamma)(\bar\partial f+\gamma f)&=\bar\partial(\gamma f)+\gamma\bar\partial f+\gamma(\gamma f)\\
 		\bar\partial_{\text{new}}f&=\bar\partial f+\gamma f.\\
-		{\color{azure}…?}
+		{\color{magenta}…?}
 	\end{align*}
 \end{remark}
 \vspace{2em}
@@ -338,7 +341,7 @@ and we wish to find
 \[\bar\partial s_1=0\qquad\qquad\text{and}\qquad\qquad \bar\partial s_n=\sum_{i+j=n-1}[s_i,s_j]\]
 The right-hand-side equation says $s_n$ is $\bar\partial$-exact.
 
-Now since our objective is to understand Tian-Tudorov-Bogomolov, we are interested in what \textbf{\textit{unobsturctedness}} is. It means that
+Now since our objective is to understand Bogomolov-Tian-Todorov, we are interested in what \textbf{\textit{unobsturctedness}} is. It means that
 \[\bar\partial s_1=0\qquad\qquad\text{and}\qquad\qquad\bar\partial s_2=[s_1,s_2]\]
 
 Also recall that
@@ -346,8 +349,19 @@ Also recall that
 	Two manifolds $M_1,M_2\subseteq\C^n$ define the same \textbf{\textit{germ}} at $0\in\C^n$ if there is an open set $U\subseteq \C^n$ containing $0$ such that
 	\[M_1\cap U=M_\cap U.\]
 \end{defn}
+and then…
+\begin{thm}[Bogomolov-Tian-Todorov]
+	content...
+\end{thm}
 
-\subsection{Griffths transversality}
+\subsection{Griffiths transversality}
+\begin{claim}
+	Let $X$ be a complex manifold. For a 1-parameter family of complex structures $(X,J_t)$ and forms $\alpha_t\in\Omega^{p,q}(X,J_T)$ we have
+\[\frac{d}{dt}\Big|_{t=0}\alpha_t\in\Omega^{p+1,q-1}(X)\oplus\Omega^{p,q}(X)\oplus\Omega^{p-1,q+1}(X).\]
+\end{claim}
+\begin{proof}
+	content...
+\end{proof}
 
 %\addcontentsline{toc}{section}{References}
 %\printbibliography
