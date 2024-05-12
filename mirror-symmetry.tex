@@ -1,8 +1,8 @@
 \documentclass{article}
 \usepackage{titlesec}
 
-\usepackage[backend=bibtex,citestyle=authortitle-terse,backref]{biblatex}
-\addbibresource{bibliography.bib}
+%\usepackage[backend=bibtex,citestyle=authortitle-terse,backref]{biblatex}
+%\addbibresource{bibliography.bib}
 
 \makeatletter
 \renewcommand\thesection{}
@@ -27,7 +27,7 @@
 \tikzcdset{scale cd/.style={every label/.append style={scale=#1},
 		cells={nodes={scale=#1}}}}
 \usepackage[bookmarks,bookmarksopen,bookmarksdepth=3]{hyperref}
-\hypersetup{%colores
+\hypersetup{
 	colorlinks=true,
 	urlcolor=blue,
 	linkcolor=magenta,
@@ -360,8 +360,95 @@ and then…
 \[\frac{d}{dt}\Big|_{t=0}\alpha_t\in\Omega^{p+1,q-1}(X)\oplus\Omega^{p,q}(X)\oplus\Omega^{p-1,q+1}(X).\]
 \end{claim}
 \begin{proof}
-	content...
+	{\color{magenta}content...}
 \end{proof}
+
+\subsection{Hodge Theory for Calabi-Yau (Victor, evening)}
+\subsubsection{preliminaries (Sergey)}
+Let's first recall that
+\begin{defn}
+	The \textbf{\textit{Hodge star}} operator is 
+	\begin{align*}
+		*:H_\partial^{p,q}&\to H_{\bar\partial}^{n-q,n-p}\\
+	\end{align*}
+\end{defn}
+\begin{prop}
+	For any complex manifold,
+	\begin{align*}
+		H^{p,q}_{\bar\partial}\times H^{n-p,n-q}_{\bar\partial}&\to H^{n,n}_{\bar\partial}\cong\C\\
+		([\alpha],[\beta])&\mapsto\int_{[X]}\alpha\wedge\beta:=(\alpha,\beta)
+	\end{align*}
+	is bilinear and non-degenerate.
+\end{prop}
+\begin{proof}
+	$\forall\alpha\exists\beta=*\bar\alpha$ such that $(\alpha,\beta)\neq0$ so
+	\begin{align*}
+		0<\|\alpha\|^2=\int\alpha\wedge*\bar\alpha\\
+		\langle\alpha,\beta\rangle=\int\alpha\wedge*\bar\beta
+	\end{align*}
+	{\color{magenta}where $\langle-,-\rangle$ is the induced metric by some hermitian/riemannian metric on $X$?}
+\end{proof}
+
+\begin{thm}[Serre duality]
+	For any complex manifold,
+	\begin{align*}
+		H^{p,q}_{\bar\partial}\times H^{n-p,n-q}_{\bar\partial}&\to H^{n,n}_{\bar\partial}\cong\C\\
+		([\alpha],[\beta])&\mapsto\int_{[X]}\alpha\wedge\beta
+	\end{align*}
+	is a perfect pairing. That is
+	\[H^{p,q}\cong(H^{n-p,n-q})^*\]
+\end{thm}
+And we also have
+\begin{thm}[Hodge]
+	For Kähler manifolds
+	\[H^{p,q}\cong \overline{H^{q,p}}\]
+\end{thm}
+\subsubsection{Victor}
+We follow \cite{aroux}, lecture 3.
+\begin{remark}
+	For every Calabi-Yau manifold $X$,
+	\[H^{p,0}= H^{n,n-p}=H^{n-p}_{\bar\partial}(X,\Omega^n_X)=H_{\bar\partial}^{n-p}(X,\Omega_X)=H^{0,n-p}=H^{n-p,0}\]
+\end{remark}
+So we have some symmetry:
+\[\begin{tikzcd}[column sep=tiny,row sep=tiny]
+	&&&1&&&&\\
+	&&0&&0&&\\
+	&0&&a&&0\\
+	1&&b&&b&&1\\
+	&0&&a&&0\\
+	&&0&&0\\
+	&&&1
+\end{tikzcd}\qquad\qquad
+\begin{tikzcd}[column sep=tiny,row sep=tiny]
+	&&&1&&&&\\
+	&&0&&0&&\\
+	&0&&b&&0\\
+	1&&a&&a&&1\\
+	&0&&b&&0\\
+	&&0&&0\\
+	&&&1
+\end{tikzcd}\]
+\begin{defn}
+	Let $(X^{2n},\omega)$ be a symplectic manifold, $J$ a compatible almost-complex structure, $\omega(\cdot,J\cdot$ the associated Riemannian metric. Furthermore, let $(\Sigma, j)$ be a Riemann surface of genus $g$ and $z_1,\ldots,z_k)$ marked points.
+\end{defn}
+\begin{remark}
+	There is a well-defined moduli space of $\Mc_{g,k}=\{(\Sigma,z_1,\ dots,z_k)\}$ which is a complex manifold of dimension $3k-3+k$.
+\end{remark}
+
+\begin{defn}
+	$u:\Sigma\to X$ be $J$-holomorphic map of $J$ if
+	\[J\circ du=du\circ j\]
+	that is,
+	\[\bar\partial_Ju=\frac{1}{2}(du+Jduj)=0.\]
+	For $\beta\in H_2(X,\Z)$, we obtain an associated space
+	\[M_{g,k}(X,J,\beta)=\{(\Sigma,j,z_1,\ldots,z_k,u:\Sigma\to X|u_*[\Sigma]=\beta,\bar\partial_Ju=0\}/\sim\]
+	where $\sim$ is the equivalence given by $\phi$ below:
+	\[\begin{tikzcd}
+		\Sigma,z_1,\ldots,z_k\arrow[r,"u"]\arrow[d,"\phi",swap]\arrow[d,"\cong"]&X\\
+		\Sigma',z_1',\ldots,z_k'\arrow[ur,"u'"]
+	\end{tikzcd}\]
+\end{defn}
+
 
 %\addcontentsline{toc}{section}{References}
 %\printbibliography
