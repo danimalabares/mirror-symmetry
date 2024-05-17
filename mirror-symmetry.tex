@@ -144,6 +144,7 @@
 \DeclareMathOperator{\ev}{ev}
 \DeclareMathOperator{\hofib}{hofib}
 \DeclareMathOperator{\rel}{rel}
+\DeclareMathOperator{\Vol}{Vol}
 \DeclareMathOperator{\Nat}{Nat}
 \DeclareMathOperator{\Arr}{Arr}
 \DeclareMathOperator{\Funct}{Funct}
@@ -161,6 +162,7 @@
 \DeclareMathOperator{\PSL}{PSL}
 \DeclareMathOperator{\Teich}{Teich}
 \DeclareMathOperator{\Diff}{Diff}
+\renewcommand{\index}{\operatorname{index}}
 \DeclareMathOperator{\Spec}{Spec}
 \renewcommand{\Def}{\operatorname{Def}}
 
@@ -364,7 +366,7 @@ and then…
 \end{proof}
 
 \subsection{Hodge Theory for Calabi-Yau (afternoon)}
-\subsubsection{preliminaries (Sergey)}
+\subsubsection{Preliminaries (Sergey)}
 Let's first recall that
 \begin{defn}
 	The \textbf{\textit{Hodge star}} operator is 
@@ -403,7 +405,7 @@ And we also have
 	For Kähler manifolds
 	\[H^{p,q}\cong \overline{H^{q,p}}\]
 \end{thm}
-\subsubsection{Victor}
+\subsubsection{Pseudoholomorphic curves (Victor)}
 We follow \cite{aroux}, lecture 3.
 \begin{remark}
 	For every Calabi-Yau manifold $X$,
@@ -429,25 +431,92 @@ So we have some symmetry:
 	&&&1
 \end{tikzcd}\]
 \begin{defn}
-	Let $(X^{2n},\omega)$ be a symplectic manifold, $J$ a compatible almost-complex structure, $\omega(\cdot,J\cdot$ the associated Riemannian metric. Furthermore, let $(\Sigma, j)$ be a Riemann surface of genus $g$ and $z_1,\ldots,z_k)$ marked points.
-\end{defn}
-\begin{remark}
-	There is a well-defined moduli space of $\Mc_{g,k}=\{(\Sigma,z_1,\ dots,z_k)\}$ which is a complex manifold of dimension $3k-3+k$.
-\end{remark}
+	Let $(X^{2n},\omega)$ be a symplectic manifold, $J$ a compatible almost-complex structure, $\omega(\cdot,J\cdot)$ the associated Riemannian metric. Furthermore, let $(\Sigma, j)$ be a Riemann surface of genus $g$ and $z_1,\ldots,z_k$ marked points.
 
-\begin{defn}
-	$u:\Sigma\to X$ be $J$-holomorphic map of $J$ if
+	There is a well-defined moduli space of $\Mc_{g,k}=\{(\Sigma,z_1,\ldots,z_k)\}$ which is a complex manifold of dimension $3k-3+k$.
+
+
+
+	$u:\Sigma\to X$ is a \textbf{\textit{$J$-holomorphic (or pseudoholomorphic) map}} if
 	\[J\circ du=du\circ j\]
 	that is,
-	\[\bar\partial_Ju=\frac{1}{2}(du+Jduj)=0.\]
+	\begin{equation}\label{eq:CR}
+		\bar\partial_Ju=\frac{1}{2}(du+Jduj)=0.
+	\end{equation}
 	For $\beta\in H_2(X,\Z)$, we obtain an associated space
 	\[M_{g,k}(X,J,\beta)=\{(\Sigma,j,z_1,\ldots,z_k,u:\Sigma\to X|u_*[\Sigma]=\beta,\bar\partial_Ju=0\}/\sim\]
 	where $\sim$ is the equivalence given by $\phi$ below:
 	\[\begin{tikzcd}
 		\Sigma,z_1,\ldots,z_k\arrow[r,"u"]\arrow[d,"\phi",swap]\arrow[d,"\cong"]&X\\
-		\Sigma',z_1',\ldots,z_k'\arrow[ur,"u'"]
+		\Sigma',z_1',\ldots,z_k'\arrow[ur,"u'",swap]
 	\end{tikzcd}\]
 \end{defn}
+\begin{question}
+	Where does the object in \cref{eq:CR} live? The differential of any map of complex manifolds can be decomposed in $\partial$ and $\bar\partial$. The operator $\bar\partial_Ju$ is an element of $\Omega^{0,1}(\Sigma,u\otimes TX)=\Gamma(\Sigma,\Omega^{0,1}(\Sigma)\otimes u^*TX)$.
+\end{question}
+\begin{remark}
+	See \href{https://en.wikipedia.org/wiki/Pseudoholomorphic_curve#Analogy_with_the_classical_Cauchy–Riemann_equations}{wiki} for interpretation of this definition as a map satisfying the Cauchy-Riemann equations.
+\end{remark}
+\begin{remark}
+	See \href{http://members.unine.ch/felix.schlenk/Maths/What/pseudoholomorphic.pdf}{What is... a pseudoholomorphic curve?} for another friendly explanation:
+	\begin{quotation}
+		A pseudoholomorphic curve is just the natural modification of the notion of a holomorphic curve to the case when the ambient manifold is almost-complex.
+	\end{quotation}
+\end{remark}
+
+\section{May 17}
+\subsection{Pseudoholomorphic curves cont. (Victor)}
+We continue to read \cite{lectures2}.
+\begin{defn}
+	We say that $u:\Sigma\to X$ is \textbf{\textit{simple}} if there exists $z\in\Sigma$ such that $du(z)\neq0$ and $u^{-1}(u(z))={z}$.
+\end{defn}
+Which roughly means that the function is not generically one to one on its image.
+\begin{example}
+	The function
+	\begin{align*}
+		u:\P^1&\to\P^2\\
+		[x:y]&\mapsto[x^2:y^2:0]
+	\end{align*}
+	is not simple. Indeed, near a point $[x:y]\in\P^1$ with $x\neq0$, the differential of $u$ may be expressed in coordinates as the linear map $du=\begin{pmatrix}
+		2&0
+	\end{pmatrix}\neq0$; however $u^{-1}([x^2:y^2:0])=\{[x:y],[-x:y]\}$. The case of $y\neq0$ is analogous. We also see there are no singular points, so $u$ cannot be simple.
+\end{example}
+Then we define
+\begin{align*}
+	D_{\bar\partial}:W^{r+1,p}(\Sigma,u^*TX)\times T\Mc_{g,k}\to W^{r,p}(\Sigma,\Omega^{0,1}_\Sigma\otimes U^*TX)
+\end{align*}
+by 
+\[D_{\bar\partial}(v,j')=\bar\partial v+\frac{1}{2}(\nabla_vJ)du\cdot j+\frac{1}{2}J\cdot du\cdot j'\]
+where $W^{r,p}$ is a completion of $C^\infty(-)$ of (?) to $L^{r,p}$ norm defined by $\|f\|_{r,p}=\left(\sum_{i=0}^r\int|f^{(i)}(t)|^pdt\right)^{1/p}$.
+
+$D_{\bar\partial}$ is Fredholm, (meaning the dimensions of its kernel and cokernel are finite), with index (the difference of such numbers)
+\[\index_\R D_{\bar\partial}:=2d=2\langle c_1(TX),\beta\rangle+n(2-2g)+(6g-6+2k).\]
+
+We may interpret this equation as differentiation of the Cauchy-Riemann equations.
+
+\subsection{Dirichlet energy (Alex)}
+	Consider a map
+	\[u:(\Sigma,j)\to(X,\omega,J,g)\]
+	and define the \textbf{\textit{energy functional}}
+	\[\varepsilon=\int_\Sigma|du|^2_g\Vol_g\]
+	Now, we may take local isothermic coordinates where the metric is expressed as
+	\[g=\lambda(x,y)(dx^2+dy^2)\]
+	giving
+	\begin{align*}
+		du&=\partial_xu\otimes dx+\partial_yu\otimes dy\\
+		|du|^2&=|\partial_xu|^2\lambda^{-2}+|\partial_yu|^2\lambda^{/2}\\
+		\Vol_{\Sigma g'}&=\lambda^2dx\wedge dy
+	\end{align*}
+	Then
+	\[\varepsilon(u)=\int_\Sigma|\partial_xu|^2_g+|\partial_yu|_g^2dx\wedge dy.\]
+	The following equality shows that the energy functional attains its minimum on pseudoholomorphic maps (in virtue of \cref{eq:CR}).
+	\begin{claim}
+		For a pseudoholomorphic map,
+	\[\varepsilon(u)=\int_\Sigma2|\bar\partial_J|^2\Vol+\int_\Sigma u^*\omega\]
+	\end{claim}
+	\begin{proof}
+		content...
+	\end{proof}
 
 
 %\addcontentsline{toc}{section}{References}
