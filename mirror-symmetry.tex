@@ -1,8 +1,8 @@
 \documentclass{article}
 \usepackage{titlesec}
 
-%\usepackage[backend=bibtex,citestyle=authortitle-terse,backref]{biblatex}
-%\addbibresource{bibliography.bib}
+\usepackage[backend=bibtex,citestyle=authortitle-terse,backref]{biblatex}
+\addbibresource{bibliography.bib}
 
 \makeatletter
 \renewcommand\thesection{}
@@ -452,7 +452,7 @@ So we have some symmetry:
 	\end{tikzcd}\]
 \end{defn}
 \begin{question}
-	Where does the object in \cref{eq:CR} live? The differential of any map of complex manifolds can be decomposed in $\partial$ and $\bar\partial$. The operator $\bar\partial_Ju$ is an element of $\Omega^{0,1}(\Sigma,u\otimes TX)=\Gamma(\Sigma,\Omega^{0,1}(\Sigma)\otimes u^*TX)$.
+	Where does the object in \cref{eq:CR} live? The differential of any map of complex manifolds can be decomposed in $\partial$ and $\bar\partial$. The operator $\bar\partial_Ju$ is an element of $\Omega^{0,1}(\Sigma,u^* TX)=\Gamma(\Sigma,\Omega^{0,1}(\Sigma)\otimes u^*TX)$.
 \end{question}
 \begin{remark}
 	See \href{https://en.wikipedia.org/wiki/Pseudoholomorphic_curve#Analogy_with_the_classical_Cauchy–Riemann_equations}{wiki} for interpretation of this definition as a map satisfying the Cauchy-Riemann equations.
@@ -466,7 +466,7 @@ So we have some symmetry:
 
 \section{May 17}
 \subsection{Pseudoholomorphic curves cont. (Victor)}
-We continue to read \cite{lectures2}.
+We continue to read \cite{aroux}, lecture 3.
 \begin{defn}
 	We say that $u:\Sigma\to X$ is \textbf{\textit{simple}} if there exists $z\in\Sigma$ such that $du(z)\neq0$ and $u^{-1}(u(z))={z}$.
 \end{defn}
@@ -494,7 +494,9 @@ $D_{\bar\partial}$ is Fredholm, (meaning the dimensions of its kernel and cokern
 
 We may interpret this equation as differentiation of the Cauchy-Riemann equations.
 
-\subsection{Dirichlet energy (Alex)}
+\subsection{Dirichlet energy functional (Alex)}
+	We follow \cite{mcduff}, sec. 2.2
+	
 	Consider a map
 	\[u:(\Sigma,j)\to(X,\omega,J,g)\]
 	and define the \textbf{\textit{energy functional}}
@@ -518,8 +520,20 @@ We may interpret this equation as differentiation of the Cauchy-Riemann equation
 		content...
 	\end{proof}
 
-
-%\addcontentsline{toc}{section}{References}
-%\printbibliography
+\section{24 may (Alex)}
+We start with two short questions from last session.
+\begin{question}\leavevmode
+	\begin{itemize}
+		\item What exactly is $\Omega^1(\Sigma,E)$ where $E$ is a vector bundle? It is the space of sections of the bundle $T^*M\Sigma\otimes E$.
+		
+		\item Let $u:(\Sigma,j)\to(X,J)$. Is $du$ is an element of $\Omega^{1}(\Sigma,u^*TM)$? Yes, notice that $du$ is an element of $\Hom(T\Sigma,TX)$. Forget about all of $TX$ and consider only its image under $u$. There is an isomorphism $T\Sigma^*\otimes u^*TX\cong \Hom(T\Sigma,u^*TX)$.
+	\end{itemize}
+\end{question}
+\begin{remark}
+	There is a bundle $\Ec\to\Bc$ where $\Bc=C^\infty(\Sigma,M)$ and the fibers are $\Ec_u=\Omega^{0,1}(\Sigma,u^*TM)$. For a map $u:(\Sigma,j)\to(X,J)$, the nonlinear operator … [quote from \cite{mcduff}].
+\end{remark}
+Then we concluded the proof of the final claim of the last session.
+\addcontentsline{toc}{section}{References}
+\printbibliography
 %\clearpage
 \end{document}
