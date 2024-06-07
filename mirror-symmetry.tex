@@ -1,8 +1,8 @@
 \documentclass{article}
 \usepackage{titlesec}
 
-\usepackage[backend=bibtex,citestyle=authortitle-terse,backref]{biblatex}
-\addbibresource{bibliography.bib}
+%\usepackage[backend=bibtex,citestyle=authortitle-terse,backref]{biblatex}
+%\addbibresource{bibliography.bib}
 
 \makeatletter
 \renewcommand\thesection{}
@@ -72,7 +72,7 @@
 \declaretheoremstyle[headfont=\color{persiangreen}\normalfont\bfseries,]{colored10}
 
 \declaretheorem[style=colored1,numbered=no,name=Theorem]{thm}
-\declaretheorem[style=colored2,numbered=no,name=proposition]{prop}
+\declaretheorem[style=colored2,numbered=no,name=Proposition]{prop}
 \declaretheorem[style=colored3,numbered=no,name=Lemma]{lemma}
 \declaretheorem[style=colored4,numbered=no,name=Corollary]{coro}
 \declaretheorem[style=colored5,numbered=no,name=Example]{example}
@@ -142,8 +142,10 @@
 \DeclareMathOperator{\Tot}{Tot}
 \DeclareMathOperator{\op}{op}
 \DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\Proj}{Proj}
 \DeclareMathOperator{\hofib}{hofib}
 \DeclareMathOperator{\rel}{rel}
+\DeclareMathOperator{\sing}{sing}
 \DeclareMathOperator{\Vol}{Vol}
 \DeclareMathOperator{\Nat}{Nat}
 \DeclareMathOperator{\Arr}{Arr}
@@ -152,10 +154,12 @@
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\SL}{SL}
 \DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\alg}{alg}
 \DeclareMathOperator{\U}{U}
 \DeclareMathOperator{\SU}{SU}
 \DeclareMathOperator{\Sp}{Sp}
 \DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\tor}{tor}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Bl}{Bl}
 \DeclareMathOperator{\PGL}{PGL}
@@ -168,7 +172,7 @@
 
 \begin{document}
 {\LARGE notes on mirror symmetry}
-%\tableofcontents
+\tableofcontents
 \section{3 may (Alex)}
 %Main reference for these notes is \cite{gross}, sect. 14.
 
@@ -241,7 +245,7 @@ We wish to understand
 	\end{itemize}
 \end{defn}
 
-\section{10 May}
+\section{May 10}
 \subsection{Sergey: preliminaries}
 We work in the category of schemes over $\C$.
 \begin{defn}
@@ -513,14 +517,14 @@ We may interpret this equation as differentiation of the Cauchy-Riemann equation
 	\[\varepsilon(u)=\int_\Sigma|\partial_xu|^2_g+|\partial_yu|_g^2dx\wedge dy.\]
 	The following equality shows that the energy functional attains its minimum on pseudoholomorphic maps (in virtue of \cref{eq:CR}).
 	\begin{claim}
-		For a pseudoholomorphic map,
+		For every smooth map $u:\Sigma\to X$,
 	\[\varepsilon(u)=\int_\Sigma2|\bar\partial_J|^2\Vol+\int_\Sigma u^*\omega\]
 	\end{claim}
 	\begin{proof}
 		content...
 	\end{proof}
 
-\section{24 may (Alex)}
+\section{May 24 (Alex)}
 We start with two short questions from last session.
 \begin{question}\leavevmode
 	\begin{itemize}
@@ -530,10 +534,139 @@ We start with two short questions from last session.
 	\end{itemize}
 \end{question}
 \begin{remark}
-	There is a bundle $\Ec\to\Bc$ where $\Bc=C^\infty(\Sigma,M)$ and the fibers are $\Ec_u=\Omega^{0,1}(\Sigma,u^*TM)$. For a map $u:(\Sigma,j)\to(X,J)$, the nonlinear operator … [quote from \cite{mcduff}].
+	There is a bundle $\Ec\to\Bc$ where $\Bc=C^\infty(\Sigma,M)$ and the fibers are $\Ec_u=\Omega^{0,1}(\Sigma,u^*TM)$. For a map $u:(\Sigma,j)\to(X,J)$, the nonlinear operator
+	\[u\mapsto(u,\bar\partial_J(u))\]
+	is a sections of this bundle whose zero-set is the space of $J$-holomorphic curves.
 \end{remark}
-Then we concluded the proof of the final claim of the last session.
-\addcontentsline{toc}{section}{References}
-\printbibliography
+Then we concluded the proof of the final claim of the last session:
+
+\begin{lemma}[2.2.1, \cite{mcduff}]
+	Let $\omega$ be a nondegenerate 2-form on a smooth manifold $M$. If $J$ is $\omega$-tame then every $J$-homolomorphic curve $u:\Sigma\to M$ satisfies the energy identity
+	\[E(u)=\int_\Sigma u^*\omega.\]
+	If $J$ is $\omega$-compatible then every smooth map $u:\Sigma\to M$ satisfies
+	\[E(u)=\int_\Sigma|\bar\partial_J(u)|^2_J\Vol_\Sigma+\int_\Sigma u^*\omega.\]
+\end{lemma}
+\begin{proof}
+	We may take local isothermic coordinates where the metric is expressed as
+	\[g=\lambda(x,y)(dx^2+dy^2)\]
+	giving
+	\begin{align*}
+		du&=\partial_xu\otimes dx+\partial_yu\otimes dy\\
+		\implies |du|^2&=|\partial_xu|^2\lambda^{-2}+|\partial_yu|^2\lambda^{/2}\\
+		\Vol_{\Sigma g'}&=\lambda^2dx\wedge dy
+	\end{align*}
+	Then
+	\[\varepsilon(u)=\int_\Sigma|\partial_xu|^2_g+|\partial_yu|_g^2dx\wedge dy.\]
+\end{proof}
+
+\section{June 7 Frobenius manifolds (Sergey)}%
+\label{sec:June 7}
+
+%Recall from \cite{dubrovin} that he invented Frobenius manifolds as the coordinate-free form of WDVV. What is WDVV?
+
+\subsection{Introduction}
+Dubrovin in 1991 formulated the notion of \textit{\textbf{Frobenius Manifold}} in the context of the \textit{\textbf{WDVV equation}} in singularity theory. In late 1970s or early 1980s, Kyoji Saito formulated the notion of \textit{\textbf{flat structure}}, or \textit{\textbf{Saito (pre-)structure}}. In 1962, when May (?) was 24, there was a lot of activity in Paris. Not far from then in Japan, Saito was looking for a PhD, and eventually became a student of Brieskorn (though he initially intended to work with Grauert).
+
+Saito started studiyng quotient singularities, and then we continued to all isolated singularitied.
+
+\textit{\textbf{Brieskorn sphere}} is given by
+\[\begin{cases}
+x_1^2+x_2^2+x_3^2+x_4^2+x_5=0\\
+\sum|x_i|^2=\Sigma
+\end{cases}\]
+in $\C^5$.
+
+More generally we can study links of \textit{\textbf{isolated singularities}}. Let $f\in\C[[x_1,\ldots,x_n]]$ and define $H=\{f(x)=0\}$.
+
+What is $T_0^*H$? Well,
+\[T_0^*H=\frac{\mathfrak{m}}{\mathfrak{m}_0}\] where $\mathfrak{m_0}=\langle x_1,\ldots,x_n\rangle$ is a maximal ideal.
+
+The important thing is $f(0)=0\iff f\in\\mathfrak{m}_0$. Also, $0\in H_{\sing}\iff f\in \mathfrak{m}_0^2$.
+
+\begin{defn}
+	Given $\C^*=V$, ie. a $\Z$-grading of $V$, then $f\in S^\bullet V^*$ is called \textit{\textbf{quasi-homogeneous}} of degree $D$ and weight $(w_1,\ldots,w_n)$ if
+	\[\lambda^*f=\lambda^D\cdot f\]
+that is,
+\[f(\lambda^{w_1}x_1,\lambda^{w_2}x_2,\ldots,\lambda^{w_n}x_n) =\lambda^Df(x_1,\ldots,x_n)\]
+\end{defn}
+\begin{prop}[Euler]
+	The \textit{\textbf{Euler vector field}} is $\sum x_i \frac{\partial }{\partial x_i}$. So,
+	%\begin{equation*}
+	%	E(f)=\sum \frac{\partial f}{\partial x_i}=\sum x_i \frac{w_if}{x_i}=\sum w_if=Df
+	%	\label{par:}
+	%	
+	%\end{equation*}
+\end{prop}
+\begin{proof}
+	$\lambda\to 1+\varepsilon \ldots$
+\end{proof}
+
+Another way of saying that $f$ is quasi-homogeneous is that $f$ is eigenvector of $E_w$ with eigenvalue $D$.
+
+\begin{exercise}
+	Homogeneous singularity is isolated iff $Z(f)\subset \mathbb{P}(V)$ is smooth.
+\end{exercise}
+
+If you have weights, you have \textit{\textbf{weighted projective space}}: $\mathbb{P}(w_1,\ldots,w_n)=\Proj k[x_1,\ldots,x_n]$ for $x_i$ of degree $w_i$.
+
+\begin{defn}
+	$w$ is \textit{\textbf{well-formed}} if $\forall i$, $\operatorname{grd}(w_1,w_2,\ldots,\hat{w_i},\ldots,w_n)=1$.
+\end{defn}
+
+Look for some text containing "singular locus of weighted projective space".
+
+\begin{example}
+	$\mathbb{P}(1,\ldots,1,d)$. So we have $\mathbb{P}(1,1,d)\overset{\Oc(d)}{\hookrightarrow} \mathbb{P}^{d+1}$, which is the Vernoese embedding. Secretely $\mathbb{P}(1,1,d)$ is a projective cone over $v_d(\mathbb{P}^1$ with singularities its vertex.
+
+	We can resolve this singularity by blowing up: $Y\overset{\Lc}{\hookrightarrow}\mathbb{P}^N$, $\Bl_p\mathbb{P}$.
+\end{example}
+
+\subsection{Milnor ring and Milnor number}
+$f$ isolated singularities iff
+\begin{equation*}
+	\dim\C[[x]]/\left( \frac{\partial f}{\partial x_i} ,f \right) <\infty
+\end{equation*}
+Define the latter ring to be the \textbf{\textit{Milnor ring}}:
+\[\mu_{\ev}=\C[[x]]/\left( \frac{\partial f}{\partial x_i} ,f \right)\]
+
+There's also the \textbf{\textit{Milnor fibration}}, and the \textbf{\textit{Milnor map}}:
+\[\begin{tikzcd}
+	S_\varepsilon\arrow[dr,"\text{Milnor map}",swap]\arrow[r]&\C^*\arrow[d,"\arg"]\\
+	&\U(1)\cong S^1
+\end{tikzcd}\]
+\begin{thm}[Milnor]
+	$\mu_{\alg}=\mu_{\tor}$
+\end{thm}
+
+\subsection{Versal deformation of isolated singularities}
+Let $\lambda\in\C^n$,
+\[f_\lambda = f+\lambda_1g_1+\lambda_2g_2+\ldots+\lambda_\mu g_\mu\]
+
+\begin{thm}[Saito]
+	On versal deformation spaces of isolated singularities there exists a rich structure called \textbf{\textit{flat structure}}, a \textbf{\textit{primitive form}}, and some higher pairings, and so on and so on.
+\end{thm}
+
+So, Dubrrovin defined Frobenius manifolds in 1991, and what is it?
+\begin{defn}
+	Take a manifold either real or complex, and introduce some geometric structure as follows: a metric $g$, a $3$-tensor $C$, such that $\forall m\in M$, $T_mM$ has the structure of a Frobenius algebra.
+\end{defn}
+
+\subsection{Frobenius algebra}
+You have $A$ and a pairing $A\otimes A\to A$. So the 3-tensor is
+\begin{align*}
+	g(a\cdot b,c)=g(a,b\cdot c)
+\end{align*}
+You can also write this as $g(e,a)=\tau(a)$ for neutral element $e$. Notice this is the same as 2d TQFT. Also a connection
+\[\nabla =\nabla^g+K\]
+and we can also consider a 1-parametric family of connections
+\[\nabla^{(\alpha)} =\nabla^g+\alpha K\]
+with $\nabla^{(\alpha)}$ flat for all $\alpha$. So this is a pencil of metrics.
+
+\begin{quotation}
+	For every isolated singularity, its space of versal deformations has a Frobenius manifolds structure.
+\end{quotation}
+
+%\addcontentsline{toc}{section}{References}
+%\printbibliography
 %\clearpage
 \end{document}
