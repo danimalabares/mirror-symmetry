@@ -1,177 +1,17 @@
-\documentclass{article}
-\usepackage{titlesec}
-
-%\usepackage[backend=bibtex,citestyle=authortitle-terse,backref]{biblatex}
-%\addbibresource{bibliography.bib}
-
-\makeatletter
-\renewcommand\thesection{}
-\renewcommand\thesubsection{\@arabic\c@section.\@arabic\c@subsection}
-\makeatother
-\usepackage{tocloft}
-\renewcommand{\thesubsection}{\arabic{subsection}}
-
-
-\usepackage[left=4cm, right=4cm]{geometry}
-\usepackage{palatino,eulervm,dutchcal,xcolor}
-\usepackage{graphicx,subcaption,float}
-\usepackage{enumitem,parskip,multicol,array}
-\newcolumntype{L}{>{$}c<{$}}%table in mathmode
-\usepackage{amsthm,amssymb,amsmath,mathtools,thmtools,tikz,tikz-cd}
-\usetikzlibrary{%
-	matrix,%
-	calc,%
-	arrows,%
-	shapes,
-	decorations.markings,backgrounds,calc,intersections}
-\tikzcdset{scale cd/.style={every label/.append style={scale=#1},
-		cells={nodes={scale=#1}}}}
-\usepackage[bookmarks,bookmarksopen,bookmarksdepth=3]{hyperref}
-\hypersetup{
-	colorlinks=true,
-	urlcolor=blue,
-	linkcolor=magenta,
-	citecolor=blue,
-	filecolor=blue,
-	urlbordercolor=white,
-	linkbordercolor=white,
-	citebordercolor=white,
-	filebordercolor=white}
-\usepackage{cleveref}
-
-\definecolor{blue-violet}{rgb}{0.54, 0.17, 0.89}
-\definecolor{azure}{rgb}{0.0, 0.5, 1.0}
-\definecolor{green(ncs)}{rgb}{0.0, 0.62, 0.42}
-\definecolor{forestgreen}{rgb}{0.13, 0.55, 0.13}
-\definecolor{limegreen}{rgb}{0.2, 0.8, 0.2}
-\definecolor{palatinateblue}{rgb}{0.15, 0.23, 0.89}
-\definecolor{trueblue}{rgb}{0.0, 0.45, 0.81}
-\definecolor{goldenyellow}{rgb}{1.0, 0.87, 0.0}
-\definecolor{fashionfuchsia}{rgb}{0.96, 0.0, 0.63}
-\definecolor{brightcerulean}{rgb}{0.11, 0.67, 0.84}
-\definecolor{jonquil}{rgb}{0.98, 0.85, 0.37}
-\definecolor{lavendermagenta}{rgb}{0.93, 0.51, 0.93}
-\definecolor{peru}{rgb}{0.8, 0.52, 0.25}
-\definecolor{persimmon}{rgb}{0.93, 0.35, 0.0}
-\definecolor{persianred}{rgb}{0.8, 0.2, 0.2}
-\definecolor{persianblue}{rgb}{0.11, 0.22, 0.73}
-\definecolor{persiangreen}{rgb}{0.0, 0.65, 0.58}
-\definecolor{persianyellow}{rgb}{0.9, 0.89, 0.0}
-
-
-
-\declaretheoremstyle[headfont=\color{trueblue}\normalfont\bfseries,]{colored1}
-\declaretheoremstyle[headfont=\color{forestgreen}\normalfont\bfseries,]{colored2}
-\declaretheoremstyle[headfont=\color{peru}\normalfont\bfseries,]{colored3}
-\declaretheoremstyle[headfont=\color{persiangreen}\normalfont\bfseries,]{colored4}
-\declaretheoremstyle[headfont=\color{brightcerulean}\normalfont\bfseries,]{colored5}
-\declaretheoremstyle[headfont=\color{lavendermagenta}\normalfont\bfseries,]{colored6}
-\declaretheoremstyle[headfont=\color{blue-violet}\normalfont\bfseries,]{colored7}
-\declaretheoremstyle[headfont=\color{green(ncs)}\normalfont\bfseries,]{colored8}
-\declaretheoremstyle[headfont=\color{peru}\normalfont\bfseries,]{colored9}
-\declaretheoremstyle[headfont=\color{persiangreen}\normalfont\bfseries,]{colored10}
-
-\declaretheorem[style=colored1,numbered=no,name=Theorem]{thm}
-\declaretheorem[style=colored2,numbered=no,name=Proposition]{prop}
-\declaretheorem[style=colored3,numbered=no,name=Lemma]{lemma}
-\declaretheorem[style=colored4,numbered=no,name=Corollary]{coro}
-\declaretheorem[style=colored5,numbered=no,name=Example]{example}
-\declaretheorem[style=colored5,numbered=no,name=Examples]{exemplos}
-\declaretheorem[style=colored7,numbered=no,name=Exercise]{exercise}
-\declaretheorem[style=colored6,numbered=no,name=Remark]{remark}
-\declaretheorem[style=colored8,numbered=no,name=Claim]{claim}
-\declaretheorem[style=colored9,numbered=no,name=Definition]{defn}
-\declaretheorem[style=colored10,numbered=no,name=Question]{question}
-
-\numberwithin{equation}{section}
-
-\newcommand{\A}{\mathbb{A}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\D}{\mathbb{D}}
-\renewcommand{\P}{\mathbb{P}}
-
-\newcommand{\Ac}{\mathcal{A}}
-\newcommand{\Bc}{\mathcal{B}}
-\newcommand{\Cc}{\mathcal{C}}
-\newcommand{\Dc}{\mathcal{D}}
-\newcommand{\Ec}{\mathcal{E}}
-\newcommand{\Fc}{\mathcal{F}}
-\newcommand{\Gc}{\mathcal{G}}
-\newcommand{\Hc}{\mathcal{H}}
-\newcommand{\Ic}{\mathcal{I}}
-\newcommand{\Jc}{\mathcal{J}}
-\newcommand{\Kc}{\mathcal{K}}
-\newcommand{\Lc}{\mathcal{L}}
-\newcommand{\Mc}{\mathcal{M}}
-\newcommand{\Nc}{\mathcal{N}}
-\newcommand{\Oc}{\mathcal{O}}
-\newcommand{\Pc}{\mathcal{P}}
-\newcommand{\Qc}{\mathcal{Q}}
-\newcommand{\Rc}{\mathcal{R}}
-\newcommand{\Sc}{\mathcal{S}}
-\newcommand{\Tc}{\mathcal{T}}
-\newcommand{\Uc}{\mathcal{U}}
-\newcommand{\Vc}{\mathcal{V}}
-\newcommand{\Wc}{\mathcal{W}}
-\newcommand{\Xc}{\mathcal{X}}
-\newcommand{\Yc}{\mathcal{Y}}
-\newcommand{\Zc}{\mathcal{Z}}
-\newcommand{\Xf}{\mathfrak{X}}
-
-\DeclareMathOperator{\img}{img}
-\DeclareMathOperator{\Arg}{Arg}
-\DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\pt}{pt}
-\DeclareMathOperator{\Alt}{Alt}
-\DeclareMathOperator{\Def}{Def}
-\DeclareMathOperator{\sgn}{sgn}
-\DeclareMathOperator{\hTop}{h-Top}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\Int}{Int}
-\DeclareMathOperator{\Ob}{Ob}
-\DeclareMathOperator{\Mor}{Mor}
-\DeclareMathOperator{\Top}{Top}
-\DeclareMathOperator{\Set}{Set}
-\DeclareMathOperator{\CGWH}{CGWH}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\Map}{Map}
-\DeclareMathOperator{\Tot}{Tot}
-\DeclareMathOperator{\op}{op}
-\DeclareMathOperator{\ev}{ev}
-\DeclareMathOperator{\Proj}{Proj}
-\DeclareMathOperator{\hofib}{hofib}
-\DeclareMathOperator{\rel}{rel}
-\DeclareMathOperator{\sing}{sing}
-\DeclareMathOperator{\Vol}{Vol}
-\DeclareMathOperator{\Nat}{Nat}
-\DeclareMathOperator{\Arr}{Arr}
-\DeclareMathOperator{\Funct}{Funct}
-\DeclareMathOperator{\colim}{colim}
-\DeclareMathOperator{\GL}{GL}
-\DeclareMathOperator{\SL}{SL}
-\DeclareMathOperator{\SO}{SO}
-\DeclareMathOperator{\alg}{alg}
-\DeclareMathOperator{\U}{U}
-\DeclareMathOperator{\SU}{SU}
-\DeclareMathOperator{\Sp}{Sp}
-\DeclareMathOperator{\M}{M}
-\DeclareMathOperator{\tor}{tor}
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Bl}{Bl}
-\DeclareMathOperator{\PGL}{PGL}
-\DeclareMathOperator{\PSL}{PSL}
-\DeclareMathOperator{\Teich}{Teich}
-\DeclareMathOperator{\Diff}{Diff}
-\renewcommand{\index}{\operatorname{index}}
-\DeclareMathOperator{\Spec}{Spec}
-\renewcommand{\Def}{\operatorname{Def}}
+\input{/Users/daniel/github/config/preamble.sty}
+\input{/Users/daniel/github/config/thms-eng.sty}
 
 \begin{document}
-{\LARGE notes on mirror symmetry}
+\begin{minipage}{\textwidth}
+	\begin{minipage}{1\textwidth}
+		 \hfill 
+		
+		{\small \hfill\href{https://github.com/danimalabares/mirror-symmetry}{github.com/danimalabares/mirror-symmetry}}
+	\end{minipage}
+\end{minipage}\vspace{.2cm}\hrule
+
+\vspace{.5em}
+{\LARGE Notes on mirror symmetry}
 \tableofcontents
 \section{3 may (Alex)}
 %Main reference for these notes is \cite{gross}, sect. 14.
@@ -191,7 +31,7 @@ We wish to understand
 	All complex manifolds are almost complex manifolds.
 \end{example}
 \begin{thm}
-	A necessary and sufficient condition for a $2u$-smooth manifold $M$ to admit an almost complex structure is that the group of tangent bundle of $M$ could be reduced to $\U(n)$.
+	A necessary and sufficient condition for a $2u$-smooth manifold $M$ to admit an almost complex structure is that the group of tangent bundle of $M$ could be reduced to $\mathsf{U}(n)$.
 \end{thm}
 \begin{thm}[Newlander-Nirenberg]
 	Let $(M,J)$ be an almost complex manifold. Then, the following are equivalent:
@@ -203,14 +43,14 @@ We wish to understand
 	An almost complex structure on a real 2-dimensional manifold is a complex structure.
 \end{prop}
 \begin{proof}
-	By the Newlander-Nirenberg theorem, given a point $p\in U\subset M$ and a vector field $\Xf{U}$, we have that $(V,JV)$ is a frame, and
+	By the Newlander-Nirenberg theorem, given a point $p\in U\subset M$ and a vector field $\mathfrak{X}{U}$, we have that $(V,JV)$ is a frame, and
 	\[N(V,JV)=[V,JV]+J[V,JV]+J[V,J^2V]-[JV,J^2V]=0\]
 \end{proof}
 \begin{defn}
 	A \textbf{\textit{deformation}} of complex analytic space $M$ over a germ $(S,s_0)$ of complex analytic space is a triple $\pi_,X,i)$ such that
 	\[\begin{tikzcd}
 		X\arrow[d,"\pi",swap]&M\arrow[l,"\text{embedding}",swap]\arrow[d]\\
-		(S,s_0)&\pt\arrow[l,"s_0"]
+		(S,s_0)&\operatorname{p t}\arrow[l,"s_0"]
 	\end{tikzcd}\]
 	where $M$ is a compact manifold, $M\simeq\pi^{-1}(s_0)$ and $\pi$ is proper smooth.
 \end{defn}
@@ -240,33 +80,33 @@ We wish to understand
 		\item The \textbf{\textit{Kodaira-Spencer class}} of a one-parameter deformation $J_t$ of a complex stucture $J$ is induced by a homology class $\phi_1\in H^1(X,Tx)$.
 		\item The \textbf{\textit{Kodaira-Spancer map}} is
 		\begin{align*}
-			T_sS&\to H^1(X_s,T_{X_s})=T_{[X_s]}\Def(X_{s_0})
+			T_sS&\to H^1(X_s,T_{X_s})=T_{[X_s]}\operatorname{ D e f}(X_{s_0})
 		\end{align*}
 	\end{itemize}
 \end{defn}
 
 \section{May 10}
 \subsection{Sergey: preliminaries}
-We work in the category of schemes over $\C$.
+We work in the category of schemes over $\mathbb{C}$.
 \begin{defn}
 	A morphism $f:X\to Y$ is \textbf{\textit{projective}} if
 	\[\begin{tikzcd}[column sep=small]
 		X\arrow[rr,"f"]\arrow[dr,hook,"i",swap]&&Y\\
 		&\P^n_Y=Y\times\P^n\arrow[ur]
 	\end{tikzcd}\]
-	where $i$ is a closed embedding and in fact $Y\times\P^n=\Spec\C$.
+	where $i$ is a closed embedding and in fact $Y\times\P^n=\operatorname{Spec}(\mathbb{C})$.
 \end{defn}
 \begin{defn}
 	A \textbf{\textit{Hilbert function}} for a given $Z\hookrightarrow\P^N$ is
-	\[h_Z(n)=\chi(Z,\Oc_Z(n))\]
+	\[h_Z(n)=\chi(Z,\mathcal{O}_Z(n))\]
 \end{defn}
 \begin{defn}[Found later in \cite{huybrechts}, p. 273]
-	A morphism $f:(X,\Oc_X)\to(Y,\Oc_Y)$ if \textbf{\textit{flat}} if the stalk $\Oc_{X,x}$ {\color{magenta}[…]}
+	A morphism $f:(X,\mathcal{O}_X)\to(Y,\mathcal{O}_Y)$ if \textbf{\textit{flat}} if the stalk $\mathcal{O}_{X,x}$ {\color{magenta}[…]}
 \end{defn}
 \begin{claim}[Criterium for flatness of projective morphisms]
 	A projective morhphism is flat if and only if $h_{X_t}(n)$ is constant {\color{magenta}as a function of $t$?
 		
-	$Y\to\Q[n]$}.
+	$Y\to\mathbb{Q}[n]$}.
 \end{claim}
 \begin{example}[non-flat projective morphism (blowup), which is also a non-submersion]
 	Let's find some $f:X\to Y$ projective but not flat. Suppose $X,Y$ are smooth and connected.
@@ -275,8 +115,8 @@ We work in the category of schemes over $\C$.
 		
 		We tried
 		\[\begin{tikzcd}[column sep=small]
-			&\C^2\times\P^1\arrow[dr]\\
-			X=\Bl_0\C\arrow[ur,hook]\arrow[rr,"\pi"]&&Y=\C^2
+			&\mathbb{C}^2\times\mathbb{P}^1\arrow[dr]\\
+			X=\operatorname{Bl}_0\mathbb{C}\arrow[ur,hook]\arrow[rr,"\pi"]&&Y=\mathbb{C}^2
 		\end{tikzcd}\]
 		but {\color{magenta}(I think)} its differential is not surjective due to the tangent space of the exceptional divisor.
 		
@@ -296,27 +136,27 @@ We work in the category of schemes over $\C$.
 \begin{defn}[of smooth submersion] A map whose differential is surjective.
 \end{defn}
 \begin{defn}[\cite{gross}]
-	A \textbf{\textit{deformation}} $X$ consists of a smooth proper morphism $\Xc \to S$, where $\Xc$ and $S$ are connected complex spaces, and an isomorphism $X \cong \Xc_0$, where $0\in S$ is a distinguished point. We call $\Xc\to S$ a \textbf{\textit{family of complex manifolds}}.
+	A \textbf{\textit{deformation}} $X$ consists of a smooth proper morphism $\mathcal{X} \to S$, where $\mathcal{X}$ and $S$ are connected complex spaces, and an isomorphism $X \cong \mathcal{X}_0$, where $0\in S$ is a distinguished point. We call $\mathcal{X}\to S$ a \textbf{\textit{family of complex manifolds}}.
 \end{defn}
 
-In order to define the deformation space $\Def(X)$ suppose $X$ is Kähler with $H^0(X,\Tc_X)=0$. Then there exists a universal deformation:
+In order to define the deformation space $\operatorname{Def}(X)$ suppose $X$ is Kähler with $H^0(X,\mathcal{T}_X)=0$. Then there exists a universal deformation:
 \begin{defn}[\cite{gross}]
 	A deformation $X\to(S,0)$ of $X$ is called \textbf{\textit{universal}} if any other deformation $X' \to (S',0')$ is isomorphic to the pullback under a uniquely determined morphism $\varphi:S'\to S$ with $\varphi(0')=0$.
 	\[\begin{tikzcd}
-		\Xc_S\arrow[d,"\pi_S",swap]\arrow[r]&\Xc\arrow[d]\\
-		S\arrow[r,"\exists!",swap]&\Def_S(X)
+		\mathcal{X}_S\arrow[d,"\pi_S",swap]\arrow[r]&\mathcal{X}\arrow[d]\\
+		S\arrow[r,"\exists!",swap]&\operatorname{Def}_S(X)
 	\end{tikzcd}\]
 \end{defn}
 \begin{defn}
 	The \textbf{\textit{Teichmüller space}} of $X$ is
-	\[\Teich(X)=\frac{\text{complex structures on }M}{\Diff_0}\]
+	\[\operatorname{Teich}(X)=\frac{\text{complex structures on }M}{\operatorname{Diff}_0}\]
 	and it is such that
-	\[\Tc_X\Teich(X)=H^1(X,\Tc_IX^{1,0})\]
+	\[\mathcal{T}_X\operatorname{Teich}(X)=H^1(X,\mathcal{T}_IX^{1,0})\]
 \end{defn}
 \begin{remark}[The Misha Verbitsky way]
-	Let $X=(M,I)$ and $\bar\partial:C^\infty(M)\to\Omega^1(M,\C)$ and remember that
+	Let $X=(M,I)$ and $\bar\partial:C^\infty(M)\to\Omega^1(M,\mathbb{C})$ and remember that
 	\begin{itemize}
-		\item $\img\bar\partial=\Omega^{0,1}_{(I)}(M)$
+		\item $\operatorname{img}\bar\partial=\Omega^{0,1}_{(I)}(M)$
 		\item $\bar\partial^2=0$.
 	\end{itemize}
 	Take a solution of the Maurer-Carten equation:
@@ -333,13 +173,13 @@ Now take $s\in T^{1,0}\otimes\Omega^{0,1}$ such that
 \[\bar\partial s+[s,s]=0\]
 and consider also its cohomology class $[s]\in H^1(T^{1,0})$. We have the \textbf{\textit{Kodaira-Spencer map}}
 \begin{align*}
-	\operatorname{KS}:T_{s_0}S&\to H^1(T^{1,0})\cong T_X\Def X\\
+	\operatorname{KS}:T_{s_0}S&\to H^1(T^{1,0})\cong T_X \operatorname{Def} X\\
 	s&\mapsto [s]
 \end{align*}
 which is useful because de \textbf{\textit{deformation space}} of $X$ is
-\[(\Def X,0)=\frac{\text{solutions to Maurer-Cartan}}{\Diff_0}\]
+\[(\operatorname{Def} X,0)=\frac{\text{solutions to Maurer-Cartan}}{\operatorname{Dif f}_0}\]
 
-Ok, but what is the bracket? Answer: take the usual vector field conmutator on vector fields and the wedge product on differential forms. This makes $(\Tc^{1,0}_X\otimes \Omega^{0,\bullet}_X,[,],\bar\partial)$ into a \textbf{\textit{differential graded Lie algebra (DGLA)}}.
+Ok, but what is the bracket? Answer: take the usual vector field conmutator on vector fields and the wedge product on differential forms. This makes $(\mathcal{T}^{1,0}_X\otimes \Omega^{0,\bullet}_X,[,],\bar\partial)$ into a \textbf{\textit{differential graded Lie algebra (DGLA)}}.
 
 So suppose
 \[s=\sum_{n\geq1}t^ms_m\]
@@ -352,7 +192,7 @@ Now since our objective is to understand Bogomolov-Tian-Todorov, we are interest
 
 Also recall that
 \begin{defn}
-	Two manifolds $M_1,M_2\subseteq\C^n$ define the same \textbf{\textit{germ}} at $0\in\C^n$ if there is an open set $U\subseteq \C^n$ containing $0$ such that
+	Two manifolds $M_1,M_2\subseteq\mathbb{C}^n$ define the same \textbf{\textit{germ}} at $0\in\mathbb{C}^n$ if there is an open set $U\subseteq \mathbb{C}^n$ containing $0$ such that
 	\[M_1\cap U=M_\cap U.\]
 \end{defn}
 and then…
@@ -381,7 +221,7 @@ Let's first recall that
 \begin{prop}
 	For any complex manifold,
 	\begin{align*}
-		H^{p,q}_{\bar\partial}\times H^{n-p,n-q}_{\bar\partial}&\to H^{n,n}_{\bar\partial}\cong\C\\
+		H^{p,q}_{\bar\partial}\times H^{n-p,n-q}_{\bar\partial}&\to H^{n,n}_{\bar\partial}\cong\mathbb{C}\\
 		([\alpha],[\beta])&\mapsto\int_{[X]}\alpha\wedge\beta:=(\alpha,\beta)
 	\end{align*}
 	is bilinear and non-degenerate.
@@ -398,7 +238,7 @@ Let's first recall that
 \begin{thm}[Serre duality]
 	For any complex manifold,
 	\begin{align*}
-		H^{p,q}_{\bar\partial}\times H^{n-p,n-q}_{\bar\partial}&\to H^{n,n}_{\bar\partial}\cong\C\\
+		H^{p,q}_{\bar\partial}\times H^{n-p,n-q}_{\bar\partial}&\to H^{n,n}_{\bar\partial}\cong\mathbb{C}\\
 		([\alpha],[\beta])&\mapsto\int_{[X]}\alpha\wedge\beta
 	\end{align*}
 	is a perfect pairing. That is
@@ -437,7 +277,7 @@ So we have some symmetry:
 \begin{defn}
 	Let $(X^{2n},\omega)$ be a symplectic manifold, $J$ a compatible almost-complex structure, $\omega(\cdot,J\cdot)$ the associated Riemannian metric. Furthermore, let $(\Sigma, j)$ be a Riemann surface of genus $g$ and $z_1,\ldots,z_k$ marked points.
 
-	There is a well-defined moduli space of $\Mc_{g,k}=\{(\Sigma,z_1,\ldots,z_k)\}$ which is a complex manifold of dimension $3k-3+k$.
+	There is a well-defined moduli space of $\mathcal{M}_{g,k}=\{(\Sigma,z_1,\ldots,z_k)\}$ which is a complex manifold of dimension $3k-3+k$.
 
 
 
@@ -447,7 +287,7 @@ So we have some symmetry:
 	\begin{equation}\label{eq:CR}
 		\bar\partial_Ju=\frac{1}{2}(du+Jduj)=0.
 	\end{equation}
-	For $\beta\in H_2(X,\Z)$, we obtain an associated space
+	For $\beta\in H_2(X,\mathbb{Z})$, we obtain an associated space
 	\[M_{g,k}(X,J,\beta)=\{(\Sigma,j,z_1,\ldots,z_k,u:\Sigma\to X|u_*[\Sigma]=\beta,\bar\partial_Ju=0\}/\sim\]
 	where $\sim$ is the equivalence given by $\phi$ below:
 	\[\begin{tikzcd}
@@ -478,7 +318,7 @@ Which roughly means that the function is not generically one to one on its image
 \begin{example}
 	The function
 	\begin{align*}
-		u:\P^1&\to\P^2\\
+		u:\mathbb{P}^1&\to\mathbb{P}^2\\
 		[x:y]&\mapsto[x^2:y^2:0]
 	\end{align*}
 	is not simple. Indeed, near a point $[x:y]\in\P^1$ with $x\neq0$, the differential of $u$ may be expressed in coordinates as the linear map $du=\begin{pmatrix}
@@ -487,14 +327,14 @@ Which roughly means that the function is not generically one to one on its image
 \end{example}
 Then we define
 \begin{align*}
-	D_{\bar\partial}:W^{r+1,p}(\Sigma,u^*TX)\times T\Mc_{g,k}\to W^{r,p}(\Sigma,\Omega^{0,1}_\Sigma\otimes U^*TX)
+	D_{\bar\partial}:W^{r+1,p}(\Sigma,u^*TX)\times T\mathcal{M}_{g,k}\to W^{r,p}(\Sigma,\Omega^{0,1}_\Sigma\otimes U^*TX)
 \end{align*}
 by 
 \[D_{\bar\partial}(v,j')=\bar\partial v+\frac{1}{2}(\nabla_vJ)du\cdot j+\frac{1}{2}J\cdot du\cdot j'\]
 where $W^{r,p}$ is a completion of $C^\infty(-)$ of (?) to $L^{r,p}$ norm defined by $\|f\|_{r,p}=\left(\sum_{i=0}^r\int|f^{(i)}(t)|^pdt\right)^{1/p}$.
 
 $D_{\bar\partial}$ is Fredholm, (meaning the dimensions of its kernel and cokernel are finite), with index (the difference of such numbers)
-\[\index_\R D_{\bar\partial}:=2d=2\langle c_1(TX),\beta\rangle+n(2-2g)+(6g-6+2k).\]
+\[\index_\mathbb{R} D_{\bar\partial}:=2d=2\langle c_1(TX),\beta\rangle+n(2-2g)+(6g-6+2k).\]
 
 We may interpret this equation as differentiation of the Cauchy-Riemann equations.
 
@@ -504,21 +344,21 @@ We may interpret this equation as differentiation of the Cauchy-Riemann equation
 	Consider a map
 	\[u:(\Sigma,j)\to(X,\omega,J,g)\]
 	and define the \textbf{\textit{energy functional}}
-	\[\varepsilon=\int_\Sigma|du|^2_g\Vol_g\]
+	\[\varepsilon=\int_\Sigma|du|^2_g\operatorname{Vol}_g\]
 	Now, we may take local isothermic coordinates where the metric is expressed as
 	\[g=\lambda(x,y)(dx^2+dy^2)\]
 	giving
 	\begin{align*}
 		du&=\partial_xu\otimes dx+\partial_yu\otimes dy\\
 		|du|^2&=|\partial_xu|^2\lambda^{-2}+|\partial_yu|^2\lambda^{/2}\\
-		\Vol_{\Sigma g'}&=\lambda^2dx\wedge dy
+		\operatorname{Vol}_{\Sigma g'}&=\lambda^2dx\wedge dy
 	\end{align*}
 	Then
 	\[\varepsilon(u)=\int_\Sigma|\partial_xu|^2_g+|\partial_yu|_g^2dx\wedge dy.\]
 	The following equality shows that the energy functional attains its minimum on pseudoholomorphic maps (in virtue of \cref{eq:CR}).
 	\begin{claim}
 		For every smooth map $u:\Sigma\to X$,
-	\[\varepsilon(u)=\int_\Sigma2|\bar\partial_J|^2\Vol+\int_\Sigma u^*\omega\]
+	\[\varepsilon(u)=\int_\Sigma2|\bar\partial_J|^2\operatorname{Vol}+\int_\Sigma u^*\omega\]
 	\end{claim}
 	\begin{proof}
 		content...
@@ -530,11 +370,11 @@ We start with two short questions from last session.
 	\begin{itemize}
 		\item What exactly is $\Omega^1(\Sigma,E)$ where $E$ is a vector bundle? It is the space of sections of the bundle $T^*M\Sigma\otimes E$.
 		
-		\item Let $u:(\Sigma,j)\to(X,J)$. Is $du$ is an element of $\Omega^{1}(\Sigma,u^*TM)$? Yes, notice that $du$ is an element of $\Hom(T\Sigma,TX)$. Forget about all of $TX$ and consider only its image under $u$. There is an isomorphism $T\Sigma^*\otimes u^*TX\cong \Hom(T\Sigma,u^*TX)$.
+		\item Let $u:(\Sigma,j)\to(X,J)$. Is $du$ is an element of $\Omega^{1}(\Sigma,u^*TM)$? Yes, notice that $du$ is an element of $\operatorname{Hom}(T\Sigma,TX)$. Forget about all of $TX$ and consider only its image under $u$. There is an isomorphism $T\Sigma^*\otimes u^*TX\cong \operatorname{Hom}(T\Sigma,u^*TX)$.
 	\end{itemize}
 \end{question}
 \begin{remark}
-	There is a bundle $\Ec\to\Bc$ where $\Bc=C^\infty(\Sigma,M)$ and the fibers are $\Ec_u=\Omega^{0,1}(\Sigma,u^*TM)$. For a map $u:(\Sigma,j)\to(X,J)$, the nonlinear operator
+	There is a bundle $\mathcal{E}\to\mathcal{B}$ where $\mathcal{B}=C^\infty(\Sigma,M)$ and the fibers are $\mathcal{E}_u=\Omega^{0,1}(\Sigma,u^*TM)$. For a map $u:(\Sigma,j)\to(X,J)$, the nonlinear operator
 	\[u\mapsto(u,\bar\partial_J(u))\]
 	is a sections of this bundle whose zero-set is the space of $J$-holomorphic curves.
 \end{remark}
@@ -544,7 +384,7 @@ Then we concluded the proof of the final claim of the last session:
 	Let $\omega$ be a nondegenerate 2-form on a smooth manifold $M$. If $J$ is $\omega$-tame then every $J$-homolomorphic curve $u:\Sigma\to M$ satisfies the energy identity
 	\[E(u)=\int_\Sigma u^*\omega.\]
 	If $J$ is $\omega$-compatible then every smooth map $u:\Sigma\to M$ satisfies
-	\[E(u)=\int_\Sigma|\bar\partial_J(u)|^2_J\Vol_\Sigma+\int_\Sigma u^*\omega.\]
+	\[E(u)=\int_\Sigma|\bar\partial_J(u)|^2_J\operatorname{Vol}_\Sigma+\int_\Sigma u^*\omega.\]
 \end{lemma}
 \begin{proof}
 	We may take local isothermic coordinates where the metric is expressed as
@@ -553,7 +393,7 @@ Then we concluded the proof of the final claim of the last session:
 	\begin{align*}
 		du&=\partial_xu\otimes dx+\partial_yu\otimes dy\\
 		\implies |du|^2&=|\partial_xu|^2\lambda^{-2}+|\partial_yu|^2\lambda^{/2}\\
-		\Vol_{\Sigma g'}&=\lambda^2dx\wedge dy
+		\operatorname{Vol}_{\Sigma g'}&=\lambda^2dx\wedge dy
 	\end{align*}
 	Then
 	\[\varepsilon(u)=\int_\Sigma|\partial_xu|^2_g+|\partial_yu|_g^2dx\wedge dy.\]
@@ -574,17 +414,17 @@ Saito started studiyng quotient singularities, and then we continued to all isol
 x_1^2+x_2^2+x_3^2+x_4^2+x_5=0\\
 \sum|x_i|^2=\Sigma
 \end{cases}\]
-in $\C^5$.
+in $\mathbb{C}^5$.
 
-More generally we can study links of \textit{\textbf{isolated singularities}}. Let $f\in\C[[x_1,\ldots,x_n]]$ and define $H=\{f(x)=0\}$.
+More generally we can study links of \textit{\textbf{isolated singularities}}. Let $f\in\mathbb{C}[[x_1,\ldots,x_n]]$ and define $H=\{f(x)=0\}$.
 
 What is $T_0^*H$? Well,
 \[T_0^*H=\frac{\mathfrak{m}}{\mathfrak{m}_0}\] where $\mathfrak{m_0}=\langle x_1,\ldots,x_n\rangle$ is a maximal ideal.
 
-The important thing is $f(0)=0\iff f\in\\mathfrak{m}_0$. Also, $0\in H_{\sing}\iff f\in \mathfrak{m}_0^2$.
+The important thing is $f(0)=0\iff f\in\mathfrak{m}_0$. Also, $0\in H_{\operatorname{ s i n g}}\iff f\in \mathfrak{m}_0^2$.
 
 \begin{defn}
-	Given $\C^*=V$, ie. a $\Z$-grading of $V$, then $f\in S^\bullet V^*$ is called \textit{\textbf{quasi-homogeneous}} of degree $D$ and weight $(w_1,\ldots,w_n)$ if
+	Given $\mathbb{C}^*=V$, ie. a $\mathbb{Z}$-grading of $V$, then $f\in S^\bullet V^*$ is called \textit{\textbf{quasi-homogeneous}} of degree $D$ and weight $(w_1,\ldots,w_n)$ if
 	\[\lambda^*f=\lambda^D\cdot f\]
 that is,
 \[f(\lambda^{w_1}x_1,\lambda^{w_2}x_2,\ldots,\lambda^{w_n}x_n) =\lambda^Df(x_1,\ldots,x_n)\]
@@ -607,7 +447,7 @@ Another way of saying that $f$ is quasi-homogeneous is that $f$ is eigenvector o
 	Homogeneous singularity is isolated iff $Z(f)\subset \mathbb{P}(V)$ is smooth.
 \end{exercise}
 
-If you have weights, you have \textit{\textbf{weighted projective space}}: $\mathbb{P}(w_1,\ldots,w_n)=\Proj k[x_1,\ldots,x_n]$ for $x_i$ of degree $w_i$.
+If you have weights, you have \textit{\textbf{weighted projective space}}: $\mathbb{P}(w_1,\ldots,w_n)=\operatorname{Proj} k[x_1,\ldots,x_n]$ for $x_i$ of degree $w_i$.
 
 \begin{defn}
 	$w$ is \textit{\textbf{well-formed}} if $\forall i$, $\operatorname{grd}(w_1,w_2,\ldots,\hat{w_i},\ldots,w_n)=1$.
@@ -616,30 +456,30 @@ If you have weights, you have \textit{\textbf{weighted projective space}}: $\mat
 Look for some text containing "singular locus of weighted projective space".
 
 \begin{example}
-	$\mathbb{P}(1,\ldots,1,d)$. So we have $\mathbb{P}(1,1,d)\overset{\Oc(d)}{\hookrightarrow} \mathbb{P}^{d+1}$, which is the Vernoese embedding. Secretely $\mathbb{P}(1,1,d)$ is a projective cone over $v_d(\mathbb{P}^1$ with singularities its vertex.
+	$\mathbb{P}(1,\ldots,1,d)$. So we have $\mathbb{P}(1,1,d)\overset{\mathcal{O}(d)}{\hookrightarrow} \mathbb{P}^{d+1}$, which is the Vernoese embedding. Secretely $\mathbb{P}(1,1,d)$ is a projective cone over $v_d(\mathbb{P}^1$ with singularities its vertex.
 
-	We can resolve this singularity by blowing up: $Y\overset{\Lc}{\hookrightarrow}\mathbb{P}^N$, $\Bl_p\mathbb{P}$.
+	We can resolve this singularity by blowing up: $Y\overset{\mathcal{L}}{\hookrightarrow}\mathbb{P}^N$, $\operatorname{ B l}_p\mathbb{P}$.
 \end{example}
 
 \subsection{Milnor ring and Milnor number}
 $f$ isolated singularities iff
 \begin{equation*}
-	\dim\C[[x]]/\left( \frac{\partial f}{\partial x_i} ,f \right) <\infty
+	\dim\mathbb{C}[[x]]/\left( \frac{\partial f}{\partial x_i} ,f \right) <\infty
 \end{equation*}
 Define the latter ring to be the \textbf{\textit{Milnor ring}}:
-\[\mu_{\ev}=\C[[x]]/\left( \frac{\partial f}{\partial x_i} ,f \right)\]
+\[\mu_{\operatorname{ e v}}=\mathbb{C}[[x]]/\left( \frac{\partial f}{\partial x_i} ,f \right)\]
 
 There's also the \textbf{\textit{Milnor fibration}}, and the \textbf{\textit{Milnor map}}:
 \[\begin{tikzcd}
-	S_\varepsilon\arrow[dr,"\text{Milnor map}",swap]\arrow[r]&\C^*\arrow[d,"\arg"]\\
-	&\U(1)\cong S^1
+	S_\varepsilon\arrow[dr,"\text{Milnor map}",swap]\arrow[r]&\mathbb{C}^*\arrow[d,"\arg"]\\
+	&\mathsf{U}(1)\cong S^1
 \end{tikzcd}\]
 \begin{thm}[Milnor]
-	$\mu_{\alg}=\mu_{\tor}$
+	$\mu_{\operatorname{ a l g}}=\mu_{\operatorname{ to r}}$
 \end{thm}
 
 \subsection{Versal deformation of isolated singularities}
-Let $\lambda\in\C^n$,
+Let $\lambda\in\mathbb{C}^n$,
 \[f_\lambda = f+\lambda_1g_1+\lambda_2g_2+\ldots+\lambda_\mu g_\mu\]
 
 \begin{thm}[Saito]
@@ -665,6 +505,213 @@ with $\nabla^{(\alpha)}$ flat for all $\alpha$. So this is a pencil of metrics.
 \begin{quotation}
 	For every isolated singularity, its space of versal deformations has a Frobenius manifolds structure.
 \end{quotation}
+\section{Once upon a time in semester 2024.1: Fano manifolds and Mirror symmetry}
+
+\subsection*{Fano manifolds}
+	\begin{itemize}
+		\item Algebraic geometry
+		
+		Let $X$ be a compact closed complex submanifold of $\mathbb{C}\mathbb{P}^N$.
+		\[X\hookrightarrow \mathbb{C}\mathbb{P}^N\]
+		Also, $H=\mathbb{C}\mathbb{P}^{N-1}$ is a submanifold of $\mathbb{C}\mathbb{P}^N$ so consider the intersection $X\cap H$. Also we have an ample bundle,
+		\[c_1(i^*(\mathcal{O}(1)))=H^1\sim c_1(X)=c_1(Tx)\]
+		
+		\item Differential geometry
+		
+		Also we have a symplectic form $\omega$ such that
+		\begin{enumerate}
+			\item $[\omega]=c_1(X)\in H^2(X,\mathbb{Z})$.
+			\item $\omega$-Kähler, so $d\omega=0$ and $\omega(u,Ju)>0$ for all $u\neq 0$ and $\omega>0$.
+		\end{enumerate}
+		Also we have that $\operatorname{H o l}_g\subset \mathsf{U}(N)$.
+		
+		\item Symplectic geometry
+		
+		We have that $\omega$ is compatible with the complex structure $J$ and also we have a Riemannian metric. Let's define a manifold $M$ to be \textbf{\textit{monotone}} if $c_1(M,\omega)=\lambda[\omega]$ for some $\lambda\in\mathbb{R}$ positive. This is related to the ample line bundle.
+		
+		This is a \textit{rigid object}. (So we expect to find something rigid on the other side of the mirror.)
+	\end{itemize}
+	\begin{example}\leavevmode
+		\begin{enumerate}
+			\item A point.
+			\item Product of Fano manifolds.
+			\item $\mathbb{P}^1\subset\mathbb{A}$ given by $x=y^{-1}$.
+			\item $\frac{dx}{x}=-\frac{dy}{y}\implies \omega^*_x=\mathcal{O}(+2)$.
+			\item $\mathbb{P}^n$.
+			\item Hypersurface of degree $d$, $X_d\subset\mathbb{P}^n$. Solutions of polynomials.
+			\begin{itemize}
+				\item Degree 1 is just hypersurfaces.
+				\item Degree 2, quadric.
+				\item Degree 3, cubic. Famous work of1972 Griffiths and Clamens. They invented the technique of intermediate jacobians, …
+				\item Degree 4. They are birational. Iskovskisk-Manin.
+			\end{itemize}
+			\item Grassmanians $\operatorname{Gr}(k,N)$. Is an example of $G/P$, P for parabolic and it contains Borel.
+			\item $\operatorname{F l}(1,2,\ldots,N)$, so $W_1\subset W_2\subset\ldots W_N$, which is an example of $G/B$, B for Borel.
+			\item Fano manifolds are very important in Minimal Model Problem (MMP).
+		\end{enumerate}
+	\end{example}
+	
+	Properties of a Fano manifold $F$:
+	\begin{enumerate}
+		\item $\pi_1(F)=0$.
+		\item $H^i(F,\mathcal{O}_F)=H^k(F,\omega\otimes\omega^\wedge=0$. This implies that Todd genus $\chi(F,\mathcal{O})=1=\sum(-1)\dim H^k(F,\mathcal{O})=\int_{[x]}\operatorname{T d} X$ and the covering $\tilde{D}\overset{d}{\to} F$ is also a fano manifold.
+		\item All this means that hodge numbers $h^{k,0}=h^{0,k}=0$.
+		\item $\operatorname{Pic} F\cong \mathbb{Z}^\rho$ where $\rho=b_2$, so it is torsion free.
+		\[\begin{tikzcd}
+			0\arrow[r]&\operatorname{Pic} F\arrow[r,"c_1"]&H^2(F,\mathbb{Z})\arrow[r]&0
+		\end{tikzcd}\]
+		\item Now consider the open complex cone $\mathcal{K}$ of a Kähler manifold, it is a complicated object. For Fano, this cone is rational polyhedral---this follows from famous cone theorem: there are two duals, second cohomology, $H^2(X,\mathbb{R})=\mathbb{R}^\rho$, and second homology, $H_2(X,\mathbb{R})$, so if you have a complex curve $C\subset X$ its class is $[C]\in N_1$. Look for curves that $c_1>0$, so $(-\mathcal{K} x)\cdot c>0$ so on the side of cohomology you have the K\"hler cone of $\mathcal{K}$ of ample classes  and on the side homology there's the Mory cone $\mathcal{M}=\langle[c]\rangle$ and it turns out that the two cones are dual. So one is polyhedral if the other is.
+		
+		[…] then for every ray there is a map $F\to F_\rho$ such that it contracts all the rays in this class and only them, universal property.
+		
+		If you have any space $Y$, there exists so-called MRC fibration so that spaces are \textbf{\textit{rationally connected}}: for every two points you can draw rational curves. For example, for the projective space we get a point on the base.
+		
+		\item $F$ is arc-rationally connected. Of course, it is path-connected. Theorem by KKM, 1990.
+		
+		\item Deformation of Fano manifold is Fano due to positivity of the bundle (?).
+		
+		\item $\Gamma(X,\Omega^{\otimes N})=0$.
+	\end{enumerate}
+	
+	\begin{thm}[Very important, KMM]
+		For any dimension $d\geq0$ there exist only finitely many deformation classes of Fano manifolds.
+	\end{thm}
+	This yields:
+	\begin{itemize}
+		\item $d=0$, point
+		\item $d=1$, $\mathbb{P}^1$.
+		\item $d=2$, the are 10 \textbf{\textit{del Pezzo}} surfaces.
+		\begin{itemize}
+			\item $\mathbb{P}^2$.
+			\item $\mathbb{P}^1\times \mathbb{P}^1$ (the only one that is not a blow up.)
+			\item $\operatorname{B l}_{P,Q}\mathbb{P}^2$.
+			\item $\operatorname{B l}_{P_1,P_2,P_3}\mathbb{P}^2$.
+			Let's introduce some funny number: $\int_{[X]}c_1(X)^n=d>0$ the \textbf{\textit{degree}}, it is bounded by some number $F(d)$. What is \textbf{\textit{degree of $\P^n$}}? $(-K_{\mathbb{P}^n})^n=(n+1)^n$.
+			
+			\textbf{\textit{Noether's formula}} says that 
+			\[d+(\rho+2)=c_1^2+c_2=(2\chi(\mathcal{O}))\]
+			so
+			\[d+\rho=10\]
+			And we can bound the degree: $1\leq d\leq 9$. We have
+			\[\begin{tikzcd}
+				9\arrow[r,no head]&8\arrow[r,no head]&7\arrow[ld,no head]\arrow[r,no head]&6\arrow[r,no head]&5\arrow[r,no head]&4\arrow[r,no head]&3\arrow[r,no head]&2\arrow[r,no head]&1\\
+				&8
+			\end{tikzcd}\]
+			So this reminds us of the Dynkin diagram of $E_{10}$. Look at degree 3. It's a cubic surface $X_3\subset\mathbb{P}^3$. It has 27 lines and 27 pencils of conics and corresponds with branes and compactifications of ?. Also $E_6$ has 27 something and it's not a coincidence. In fact Cartan defined $E_6$ as the automorphisms of… using that there's 45 planes, intersecting… ?
+			
+			Consider double cover of $\mathbb{P}^2$.
+			
+			Also $E_7·$ is related to degree 2, they have 56 lines on them. $E_8$ to degree 1, it is very complicated of course so there's 248 lines on it.
+			
+			Up to degree 6 they are toric surfaces. 5 already is rigid and it has no moduli, finite group of automorphisms, symmetric group acts here.
+			
+			Du Val: ADE singularities.
+			
+			5 is $\overline{\mathcal{M}_{0,5}}$ its a moduli space. It's nice.
+			
+			Another property is $H^{1,1}=H^2(X,\mathbb{R})$. There is a unimodular Lorenzian lattice $(H^2(X,\mathbb{Z}),\cap\text{ pairing})$.
+		\end{itemize}
+		\item $d=3$ there are 105. $b_2\to 17$ Poincaré missed it.
+		\item $d=4$ nobody knows at all.
+	\end{itemize}
+	
+	\subsection*{Mirror symetry}
+	Corresponding to Fano manifolds, we have \textbf{\textit{Landau-Ginzburg models}}, which are pairs $(Y,W)$ where $Y$ is a quasi-projective variety and $W\in\Gamma(Y,\mathcal{O}_Y)$. Fantastic Laurent Polynomials.
+	
+	\subsection{The conifold point}
+	This is the abstract of \href{http://www.mpim-bonn.mpg.de/node/5969}{a talk by Sergey in 2015 at Bonn}:
+	\begin{quotation}
+		Conjecture $O$ describes the geometry in the complex line of the eigenvalues $u_i$ of the operator of quantum multiplication by the first Chern class acting on the cohomology of a Fano manifold. In particular, it says that eigenvalues with maximal absolute value have multiplicity one and one of them is real and positive number $T$.
+		
+		Fano manifolds tend to have mirror dual Ginzburg-Landau potentials $f$, which
+		tend to have a distinguished non-degenerate critical point which we name the
+		\textbf{\textit{conifold point}}. Explicitly the conifold point is the unique critical point $P$ on real positive locus, and the respective critical value $T_{\operatorname{ co n}} = f(P)$ is the global minimum on the real positive locus. \textbf{In this case it is conjectured that $T_{\operatorname{ co n}}$ conicides with $T$}, that is any eigenvalue $u_i$ has absolute value at most $T_{\operatorname{ co n}}$, and that the conifold point is the unique critical point with value $T_{\operatorname{ co n}}$.
+		
+		In most cases the existence of the conifold point is clear and the conjectures
+		can be checked to be true, however we do not know how to prove them even
+		for abstract toric Fano manifolds, or complete intersections therein. These conjectures
+		are basic for formulation of Gamma conjectures about the appearance of Gamma
+		unction in the symplectic topology of Fano manifolds. Two references are arXiv:1404.7388
+		and my joint work with Golyshev and Iritani arXiv:1404:6407.
+	\end{quotation}
+	Also see who quoted \textit{The conifold point}.  \href{https://scholar.google.com/scholar?start=20&hl=es&as_sdt=2005&sciodt=0,5&cites=11808564544162580683&scipsc=}{here}. And also don't forget that \href{https://en.wikipedia.org/wiki/Combinatorial_mirror_symmetry}{wiki on combinatorial mirror symmetry} exists!
+	
+	\subsection{the history of quantum cohomology}
+	\paragraph{-1.} Before mirror symmetry, in 1985, people tried to classified vector bundles in $\mathbb{C} P^2$. There are \textbf{\textit{rigid bundles}}.  (See J.M. Drezet et J. Le Pother.) So in 1987 Garolov and ? (she studied at the same time as Kontsevich) called them \textbf{\textit{Markov equations}} of the form $x^2+y^2+z^2=3xys$.
+	
+	So, there are three independant morphisms $(\mathcal{O}(0),\mathcal{O}(1),\mathcal{O}(2))\rightsquigarrow?$, difficult to specify formally. So people introduced simmer orb decompositions, and then introduced notion of Serre functor, which is donde by consider two bundles and $R\operatorname{Hom}(F,S\Sigma)$ and it is just the twist canonical bundle.
+	
+	Then some people introduced to $A_\infty$ algebras and $L_\infty$ algebras. $A_\infty$ algebra is very important because it is decomposed as $A=A_{\operatorname{ e v}}\oplus A_{\operatorname{ o d d}}$.
+
+	Some other old friends like Penner, who gave a cell decomposition of the moduli space $\mathcal{M}_{g,n}\times\mathbb{R}^n$. And Kontsevich actually uses this on his 90's book on the Witten conjectures. Then you can get some graph cohomology out of this. Kontsevich went to Harvard in the 90's and gave two lectures.
+	
+	So in the 90's physical mathematics really exploded.
+	
+	\begin{conjecture}[Witten]
+		\[\int_{[\bar{\mathcal{M}}_{g,n,n}]}\bigcap KdV\]
+	\end{conjecture}
+	
+	And then also Vafa with some \textbf{\textit{quantum rings}} with multiplicities on $H^\bullet(X)$ and $X$ K\"ahler manifold taget in 2d $N=(2,2)$ QFT. \textbf{\textit{White's associative product}}. But why is it associative? Beginings of cohomology.
+	
+	In winter 92 Fukaya gave a lecture where he related some theories in codimensions and then a category, symplectic manifold $(Y,\omega)$. Take Lagrangian manifolds as objects and then 
+	
+\section{November 26: Fano 3-folds}
+
+Take $F\subset \mathbb{P}^{g+2}$ a projective variety so that $C=F \cap\mathbb{P}^g$ is  canonically embedded curve.
+
+\begin{defn}\leavevmode
+	\textit{\textbf{Del Pezzo Variety}} is a Fano $d$-fold of degree $d-1$.
+\end{defn}
+
+\begin{defn}[Iskovskrkm-Manin]\leavevmode
+	Fano variety $\to $ projective, $-k>0$ (ample).
+\end{defn}
+
+\begin{remark}\leavevmode
+	Often Fano variety $\to$ $\mathbb{Q}$-Goresnstein singularities, $-h K_X$ is ample Cartier divisor.
+\end{remark}
+
+\begin{question}\leavevmode
+	What is the relationship between Fano varieties and positive curvature?
+\end{question}
+
+There was a discussion about \textit{\textbf{varieties of sums of powers (VSP)}} which are
+ \begin{align*}
+\operatorname{ V SP}(f_d,k)&=\left\{ \ell_1,\ldots,\ell_p \in \mathbb{P}( V^*):\exists \alpha_1,\ldots,\alpha_k \in \mathbb{C},\;  \right\} 
+\end{align*}
+
+Again:
+
+{\color{3}\bfseries Algebraic geometry.}\hspace{.5em} $-K>0$.
+
+ {\color{5}\bfseries Differential/Riemannian geometry.}\hspace{.5em} $\operatorname{Ric}_g \geq 0$ Kähler compact.
+
+ {\color{2}\bfseries Symplectic geometry.}\hspace{.5em} $(M,\omega)$ positive monotone symplectic manifold, $c_1(M,\omega)=\lambda[\omega]$, $\lambda>0$. $[\omega] = c_1(M,\omega)\in H^{2}(M, \mathbb{Z})$
+
+From DG to AG just use our knowledge from complex geometry. The other way is a deep theorem by Yau of PDE.
+
+Deep theorem of Taukes shows that the purely symplectic setting is in fact algebraic:
+
+\begin{thm}[Taukes]\leavevmode
+$\operatorname{Gr}=\operatorname{SW}$ where $\operatorname{Gr}$ is Gromov and $\operatorname{SW}$ is Seiberg-Witten invariant (that's another PDE).
+\end{thm}
+
+\begin{coro}\leavevmode
+	All symplectic Fano manifolds in dimension 4 are algebraic.
+\end{coro}
+
+We also went over the same diagram here
+\[\begin{tikzcd}
+				9\arrow[r,no head]&8\arrow[r,no head]&7\arrow[ld,no head]\arrow[r,no head]&6\arrow[r,no head]&5\arrow[r,no head]&4\arrow[r,no head]&3\arrow[r,no head]&2\arrow[r,no head]&1\\
+				&8
+			\end{tikzcd}\]
+But now we put $S_i$ instead of just a number. I think it's because  $S_i$ are surfaces of degree $i$.
+
+{\color{3}\bfseries Manin cubic forms.}\hspace{.5em} Because it's fano and so on, we have that $H^{2}(S,\mathbb{Z})=\operatorname{Pic}(S)$. Its a $(1,\rho-1)$ lattice. 
+
+\begin{exercise}\leavevmode
+	$-K_S$ is a vector of self intersection  $(2,2)$. Show that $(-K_S)^\perp \subset \operatorname{Pic}(S)$ is non degenerate, even, of rank $g-d$ and its discriminant is (find it).
+\end{exercise}
 
 %\addcontentsline{toc}{section}{References}
 %\printbibliography
