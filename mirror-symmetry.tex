@@ -654,8 +654,9 @@ with $\nabla^{(\alpha)}$ flat for all $\alpha$. So this is a pencil of metrics.
 	And then also Vafa with some \textbf{\textit{quantum rings}} with multiplicities on $H^\bullet(X)$ and $X$ K\"ahler manifold taget in 2d $N=(2,2)$ QFT. \textbf{\textit{White's associative product}}. But why is it associative? Beginings of cohomology.
 	
 	In winter 92 Fukaya gave a lecture where he related some theories in codimensions and then a category, symplectic manifold $(Y,\omega)$. Take Lagrangian manifolds as objects and then 
-	
+%\fi	
 \section{November 26: Fano 3-folds}
+\subsection{Part I (7th floor)}
 
 Take $F\subset \mathbb{P}^{g+2}$ a projective variety so that $C=F \cap\mathbb{P}^g$ is  canonically embedded curve.
 
@@ -663,34 +664,36 @@ Take $F\subset \mathbb{P}^{g+2}$ a projective variety so that $C=F \cap\mathbb{P
 	\textit{\textbf{Del Pezzo Variety}} is a Fano $d$-fold of degree $d-1$.
 \end{defn}
 
-\begin{defn}[Iskovskrkm-Manin]\leavevmode
+\begin{defn}[Iskovskikh-Manin]\leavevmode
 	Fano variety $\to $ projective, $-k>0$ (ample).
 \end{defn}
 
 \begin{remark}\leavevmode
 	Often Fano variety $\to$ $\mathbb{Q}$-Goresnstein singularities, $-h K_X$ is ample Cartier divisor.
 \end{remark}
-
+\iffalse
 \begin{question}\leavevmode
 	What is the relationship between Fano varieties and positive curvature?
-\end{question}
+\end{question}\fi
 
-There was a discussion about \textit{\textbf{varieties of sums of powers (VSP)}} which are
+There was a discussion about \textit{\textbf{varieties of sums of powers (VSP)}}.
+\iffalse which are
  \begin{align*}
 \operatorname{ V SP}(f_d,k)&=\left\{ \ell_1,\ldots,\ell_p \in \mathbb{P}( V^*):\exists \alpha_1,\ldots,\alpha_k \in \mathbb{C},\;  \right\} 
 \end{align*}
+\fi
 
-Again:
+\subsection{Part II (library)}
 
-{\color{3}\bfseries Algebraic geometry.}\hspace{.5em} $-K>0$.
+{\bfseries Algebraic geometry.}\hspace{.5em} $-K>0$.
 
- {\color{5}\bfseries Differential/Riemannian geometry.}\hspace{.5em} $\operatorname{Ric}_g \geq 0$ Kähler compact.
+ {\bfseries Differential/Riemannian geometry.}\hspace{.5em} $\operatorname{Ric}_g \geq 0$ Kähler compact.
 
- {\color{2}\bfseries Symplectic geometry.}\hspace{.5em} $(M,\omega)$ positive monotone symplectic manifold, $c_1(M,\omega)=\lambda[\omega]$, $\lambda>0$. $[\omega] = c_1(M,\omega)\in H^{2}(M, \mathbb{Z})$
+ {\bfseries Symplectic geometry.}\hspace{.5em} $(M,\omega)$ positive monotone symplectic manifold, $c_1(M,\omega)=\lambda[\omega]$, $\lambda>0$. $[\omega] = c_1(M,\omega)\in H^{2}(M, \mathbb{Z})$
 
 From DG to AG just use our knowledge from complex geometry. The other way is a deep theorem by Yau of PDE.
 
-Deep theorem of Taukes shows that the purely symplectic setting is in fact algebraic:
+Deep theorem of Taukes shows that in dimension 4 the purely symplectic setting is in fact algebraic:
 
 \begin{thm}[Taukes]\leavevmode
 $\operatorname{Gr}=\operatorname{SW}$ where $\operatorname{Gr}$ is Gromov and $\operatorname{SW}$ is Seiberg-Witten invariant (that's another PDE).
@@ -700,6 +703,8 @@ $\operatorname{Gr}=\operatorname{SW}$ where $\operatorname{Gr}$ is Gromov and $\
 	All symplectic Fano manifolds in dimension 4 are algebraic.
 \end{coro}
 
+This is open in dimension 3. What about other dimensions?
+
 We also went over the same diagram here
 \[\begin{tikzcd}
 				9\arrow[r,no head]&8\arrow[r,no head]&7\arrow[ld,no head]\arrow[r,no head]&6\arrow[r,no head]&5\arrow[r,no head]&4\arrow[r,no head]&3\arrow[r,no head]&2\arrow[r,no head]&1\\
@@ -707,11 +712,52 @@ We also went over the same diagram here
 			\end{tikzcd}\]
 But now we put $S_i$ instead of just a number. I think it's because  $S_i$ are surfaces of degree $i$.
 
-{\color{3}\bfseries Manin cubic forms.}\hspace{.5em} Because it's fano and so on, we have that $H^{2}(S,\mathbb{Z})=\operatorname{Pic}(S)$. Its a $(1,\rho-1)$ lattice. 
+{\bfseries Manin cubic forms.}\hspace{.5em} “Because it's fano and so on, we have that $H^{2}(S,\mathbb{Z})=\operatorname{Pic}(S)$. Its a $(1,\rho-1)$ lattice."
 
 \begin{exercise}\leavevmode
-	$-K_S$ is a vector of self intersection  $(2,2)$. Show that $(-K_S)^\perp \subset \operatorname{Pic}(S)$ is non degenerate, even, of rank $g-d$ and its discriminant is (find it).
+	$-K_S$ is a vector of self-intersection  $(2,2)$. Show that $(-K_S)^\perp \subset \operatorname{Pic}(S)$ is non-degenerate, even, of rank $g-d$ and its discriminant is (find it).
 \end{exercise}
+
+\subsubsection{Fine-Panov}
+Keyword: Twistor Construction.
+
+\begin{question}[Gromov]\leavevmode
+	Can any (reasonable) group be realised as the coarse moduli space of some hyperbolic orbifold? i.e. $G\subset\operatorname{I som}(\mathbb{H}^n)$ can we have
+	\[\pi_{1}(\mathbb{H}^n/G)=G'\]
+\end{question}
+
+\begin{thing4}{Answer}\leavevmode
+	Yes!
+\end{thing4}
+
+Construct a monotone symplectic Fano manifold, \textit{\textbf{Fine-Panov}} manifolds. Construct
+\[\begin{tikzcd}
+M\arrow[d,"\mathbb{C}P^{3}"]\\
+\mathbb{H}/G
+\end{tikzcd}\]
+
+\begin{coro}\leavevmode
+	$\pi_{1}(M)=G'$
+\end{coro}
+
+\begin{thing4}{Definition}\leavevmode
+\textit{\textbf{Uniruled}}: through any point there is a Raf. curve. There's also {\bfseries RC}, {\bfseries SU (symplectically uniruled)}, {\bfseries SRC}.
+\end{thing4}
+
+\begin{question}[Sergey]\leavevmode
+	How to adapt Gamma conjectures to this setting?
+\end{question}
+
+\subsection{$\geq 4$ methods of classification}
+
+\begin{enumerate}
+\item Fano-Apory-Iskovskikh. \textbf{Input}: a line $L \subset F$, that is $L\cdot H=1$. And also you need to put existence of smooth $H$.
+
+\item Mukai VB method
+\item Degenerate
+\item Toric Degenerations (Sergey's PhD).
+\item Mirror symmetry (mirror moonshine)
+\end{enumerate}
 
 %\addcontentsline{toc}{section}{References}
 %\printbibliography
